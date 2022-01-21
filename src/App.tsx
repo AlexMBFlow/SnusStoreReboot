@@ -6,7 +6,6 @@ import "antd/dist/antd.css";
 const App:FC = () => {
   return (
     <div className="App">
-
     </div>
   );
 }
