@@ -1,8 +1,17 @@
 import { snusStore } from "../snusStore/snusStore";
+import type { Snus } from "../snusStore/snusType"
 
-const initialState = {...snusStore}
+type snusStoreType = {
+    snusItems: Snus[]
+}
 
-export const snusReducer = (state = initialState, action) => {
+type snusReducerACType = {
+    type: string
+}
+
+const initialState: snusStoreType = {...snusStore}
+
+export const snusReducer = (state = initialState, action: snusReducerACType) => {
     switch (action.type) {
         case "ADD":
             return { ...state}

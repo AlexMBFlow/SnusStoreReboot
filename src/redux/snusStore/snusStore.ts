@@ -1,10 +1,10 @@
 import type { Snus } from "./snusType"
 
-type snusStore = {
+type snusStoreType = {
     snusItems: Snus[]
 }
 
-export const snusStore: snusStore = {
+export const snusStore: snusStoreType = {
     snusItems: [
         {
             name: "Nictech",

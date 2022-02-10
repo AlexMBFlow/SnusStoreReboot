@@ -1,10 +1,19 @@
 import { SEARCH_SNUS_INPUT } from "../utils/actionTypes"
 
-const initialState = {
+type basket = {
+    type: string
+    value?: string
+}
+
+type input = {
+    value: undefined | string
+}
+
+const initialState: input = {
     value: undefined
 }
 
-export const inputReducer = (state = initialState, action) => {
+export const inputReducer = (state = initialState, action: basket) => {
     switch (action.type) {
         case SEARCH_SNUS_INPUT:
             return {...state, value: action.value}

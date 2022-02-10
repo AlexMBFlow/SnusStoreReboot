@@ -2,14 +2,29 @@ import { CHANGE_CHECKED_LIST }from "../utils/actionTypes";
 import { SET_INDETERMINATE }from "../utils/actionTypes";
 import { SET_CHECK_ALL } from "../utils/actionTypes";
 
-const initialState = {
+type nicotineState = {
+    defaultCheckedList: string[]
+    plainOptions: string[]
+    indeterminate: boolean
+    checkAll: boolean
+}
+
+type nicotineAction = {
+    type: string
+    indeterminate?: boolean
+    checkAll?: boolean
+    plainOptions?: string[]
+    list?: string[]
+}
+
+const initialState: nicotineState = {
     defaultCheckedList: ["Средний", "Крепкий", "Очень крепкий"],
     plainOptions: ["Легкий", "Средний", "Крепкий", "Очень крепкий"],
     indeterminate: true,
     checkAll: false
 }
 
-export const nicotineReducer = (state = initialState, action) => {
+export const nicotineReducer = (state = initialState, action: nicotineAction) => {
     switch (action.type) {
         case CHANGE_CHECKED_LIST:
             return {...state, defaultCheckedList: action.list}
