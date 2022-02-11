@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, message } from 'antd';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { basketAddAC } from "../../../../redux/actionCreators/basketAC";
+import { basketAddAC } from "../../../../redux/actionCreators/basketAC/basketAC";
 import './SnusItem.css';
 
 export const SnusItem = ({ snusProps }) => {

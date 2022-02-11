@@ -2,12 +2,12 @@ import React from "react";
 import { Layout, Menu } from 'antd';
 import { Route, Routes, Link } from 'react-router-dom';
 import { Welcome } from "../Welcume/Welcome";
-import { Home } from "../Home/Home.js";
+import { Home } from "../Home/Home";
 import { Catalog } from "../Catalog/Catalog";
 import { Delivery } from "../Delivery/Delivery";
 import { Contacts } from "../Contacts/Contacts";
 import { FooterMain } from "../Footer/FooterMain";
-import './Layout.css';
+import './LayoutMain.css';
 
 // [ANT DESIGN] <Menu defaultSelectedKeys={['1']}></Menu> отображение при загрузке сайта соответствующего менюИтема по key, пока убрал
 

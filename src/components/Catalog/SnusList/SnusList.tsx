@@ -1,15 +1,15 @@
 import React from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import { useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid'; 
 import { SnusItem } from './SnusItem/SnusItem';
+import { useTypedSelector } from "../../../redux/hooks/useTypedSelector";
 import './SnusList.css';
 
 export const SnusList = () => {
-    const { snusItems } = useSelector(state => state.snusReducer);
-    const { value } = useSelector(state => state.inputReducer);
-    const { defaultCheckedList } = useSelector(state => state.nicotineReducer); //selectedPrice
-    const { selectedPrice } = useSelector(state => state.priceReducer);
-    const { sort } = useSelector(state => state.priceReducer);
+    const { snusItems } = useTypedSelector(state => state.snusReducer);
+    const { value } = useTypedSelector(state => state.inputReducer);
+    const { defaultCheckedList } = useTypedSelector(state => state.nicotineReducer); //selectedPrice
+    const { selectedPrice } = useTypedSelector(state => state.priceReducer);
+    const { sort } = useTypedSelector(state => state.priceReducer);
 
     const filteredPrice = snusItems.filter(el => { // фильтруем массив объектов со всем снюсом по значениям из слайдера
         if (el.price > selectedPrice[0] && el.price < selectedPrice[1]) {

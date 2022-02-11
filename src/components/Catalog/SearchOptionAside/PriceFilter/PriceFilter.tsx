@@ -2,17 +2,18 @@ import React from 'react';
 import { Select } from 'antd';
 import { Slider } from 'antd';
 import { Divider } from 'antd';
-import { useSelector, useDispatch } from 'react-redux';
-import { priceSliderAC } from "../../../../redux/actionCreators/priceSliderAC";
-import { setSortPriceAC } from "../../../../redux/actionCreators/setSortPriceAC";
+import { useDispatch } from 'react-redux';
+import { priceSliderAC } from "../../../../redux/actionCreators/priceSliderAC/priceSliderAC";
+import { setSortPriceAC } from "../../../../redux/actionCreators/setSortPriceAC/setSortPriceAC";
+import { useTypedSelector } from "../../../../redux/hooks/useTypedSelector";
 import './PriceFilter.css';
 
 export const PriceFilter = () => {
     const dispatch = useDispatch()
 
-    const {defaultPrice} = useSelector(state => state.priceReducer)
-    const {min} = useSelector(state => state.priceReducer)
-    const {max} = useSelector(state => state.priceReducer)
+    const {defaultPrice} = useTypedSelector(state => state.priceReducer)
+    const {min} = useTypedSelector(state => state.priceReducer)
+    const {max} = useTypedSelector(state => state.priceReducer)
     //const {sort} = useSelector(state => state.priceReducer) priceReducer-->state.sort
 
     const handleChangeSelect = sort => {
@@ -58,7 +59,8 @@ export const PriceFilter = () => {
             </div>
             <div className="price-filter-slider">
                 <span>Выберите желаемый диапазон цены</span>
-                <Slider onChange={handleChangeSlider} range={{ draggableTrack: true }} min={min} max={max} defaultValue={defaultPrice} />
+                <Slider onChange={handleChangeSlider} range={{ draggableTrack: true }} min={min} max={max} 
+                defaultValue={defaultPrice} />
             </div>
         </div>
     )

@@ -2,7 +2,7 @@ import { SET_SELECTED_PRICE_SLIDER } from "../utils/actionTypes";
 import { SET_SORT_PRICE_SELECT } from "../utils/actionTypes";
 
 type defaultState = {
-    defaultPrice: number[]
+    defaultPrice: [number, number]
     selectedPrice: number[]
     min: number
     max: number

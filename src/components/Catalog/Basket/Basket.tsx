@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { Modal } from 'antd';
 import { ShoppingCartOutlined } from '@ant-design/icons';
-//import { showBasketAC } from "../../../redux/actionCreators/showBasketAC";
-//import { useDispatch, useSelector } from 'react-redux';
+import { showBasketAC } from "../../../redux/actionCreators/showBasketAC/showBasketAC";
+import { useDispatch } from 'react-redux';
 import { BasketItem } from "./BasketItem/BasketItem";
 import { v4 as uuidv4 } from 'uuid';
+import { useTypedSelector } from "../../../redux/hooks/useTypedSelector"
 import "./Basket.css";
 
 export const Basket = () => {
     const dispatch = useDispatch()
-    const { isModalVisible } = useSelector(state => state.showBasket)
-    const { snusBasket } = useSelector(state => state.basketReducer)
-    const { totalPrice } = useSelector(state => state.basketReducer)
+    const { isModalVisible } = useTypedSelector(state => state.showBasket)
+    const { snusBasket } = useTypedSelector(state => state.basketReducer)
+    const { totalPrice } = useTypedSelector(state => state.basketReducer)
     const [onHover, setOnHover] = useState(false)
 
     const handleOnMouseEnter = () => {
@@ -23,15 +24,15 @@ export const Basket = () => {
     }
 
     const showModal = () => {
-        //dispatch(showBasketAC(true));
+        dispatch(showBasketAC(true));
     };
 
     const handleOk = () => {
-        //dispatch(showBasketAC(false));
+        dispatch(showBasketAC(false));
     };
 
     const handleCancel = () => {
-        //dispatch(showBasketAC(false));
+        dispatch(showBasketAC(false));
     };
 
     return (
