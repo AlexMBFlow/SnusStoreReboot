@@ -1,5 +1,6 @@
 import { CHANGE_CHECKED_LIST } from "../../utils/actionTypes";
-import type { checkList, saturationList } from "./checkedListTypes"
+//import { Dispatch } from "redux"
+import type { checkList, saturationList } from "./checkedListTypes";
 
 export const checkedListAC = (list: saturationList): checkList => {
     return {
@@ -7,3 +8,7 @@ export const checkedListAC = (list: saturationList): checkList => {
         list: list
     }
 }
+
+/* export const checkedListAC = (list: saturationList): checkList => {
+    return dispatch()
+} */

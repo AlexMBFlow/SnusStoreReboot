@@ -1,0 +1,13 @@
+.search-options-aside {    
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    padding-top: 8.5rem;
+
+}
+
+.aside-item {
+    margin-bottom: 2rem;
+    width: 100%;
+}

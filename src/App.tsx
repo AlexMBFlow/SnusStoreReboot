@@ -1,11 +1,11 @@
-import React, {FC} from 'react';
-
+import React, { FC } from 'react';
+import { LayoutMain } from "./components/Layout/LayoutMain";
 import './App.css';
-import "antd/dist/antd.css";
 
 const App:FC = () => {
   return (
     <div className="App">
+      <LayoutMain/>
     </div>
   );
 }

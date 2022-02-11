@@ -1,0 +1,11 @@
+.ant-checkbox-group {
+    display: flex !important;
+    flex-flow: column nowrap !important;
+    align-items: flex-start !important;
+}
+
+.nicotine-filter__power {
+    font-size: 16px;
+    font-weight: 800;
+    opacity: 1;
+}

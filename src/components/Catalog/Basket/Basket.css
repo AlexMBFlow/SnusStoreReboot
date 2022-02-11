@@ -1,0 +1,62 @@
+.basket {
+    width: 1.7rem;
+    height: 1.7rem;
+}
+
+.basket-ico {
+    width: 1.7rem;
+    height: 1.7rem;
+}
+
+.basket-empty {
+
+    max-width: 9rem;
+    margin: 1rem auto
+}
+
+.basket-item-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.basket-item-avatar-info {
+    font-weight: bold;
+    min-width: 3.5rem;
+    text-align: center;
+}
+
+.basket-item-name-info {
+    font-weight: bold;
+    min-width: 4.5rem;
+    text-align: center;
+}
+
+.basket-item-taste-info {
+    font-weight: bold;
+    min-width: 4.5rem;
+    text-align: center;
+}
+
+.basket-item-price-info {
+    font-weight: bold;
+    min-width: 4.5rem;
+    text-align: center;
+}
+
+.basket-total-price {
+    margin-top: 2rem;
+    display: flex;
+    flex-flow: row-reverse nowrap;
+    font-size: 0.9rem;
+    font-weight: bolder;
+}
+
+.basket-total-price-inner {
+    text-align: center;
+    min-width: 4.5rem;
+}
+
+.basket-total-price-number {
+    text-align: center;
+}

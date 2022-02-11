@@ -1,0 +1,17 @@
+
+.catalog-basket {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    width: 1.7rem;
+    height: 1.7rem;
+}
+
+.catalog-wrapper svg[data-icon="shopping-cart"] {
+    width: 1.7rem;
+    height: 1.75rem; /* фикс бага, когда курсор становится поинтер, но чтобы сработало событие ховер не хватает 1 пикселя */
+}
+
+.catalog-basket {
+    cursor: pointer;
+}
