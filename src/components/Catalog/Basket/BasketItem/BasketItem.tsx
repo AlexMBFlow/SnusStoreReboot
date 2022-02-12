@@ -7,7 +7,7 @@ import { basketRemoveAC } from "../../../../redux/actionCreators/basketAC/basket
 import "./BasketItem.css";
 
 export const BasketItem = ({ snusBasket }) => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     
     const removeItem = () => {
         message.error('Удалено из корзины', 0.85)
