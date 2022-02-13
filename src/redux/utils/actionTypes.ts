@@ -6,4 +6,5 @@ export const SET_SELECTED_PRICE_SLIDER:string = "SET_SELECTED_PRICE_SLIDER";
 export const SET_SORT_PRICE_SELECT:string = "SET_SORT_PRICE_SELECT";
 export const SET_SHOW_BASKET:string = "SET_SHOW_BASKET";
 export const ADD_SNUS_ON_BASKET:string = "ADD_SNUS_ON_BASKET";
-export const REMOVE_SNUS_ON_BASKET:string = "REMOVE_SNUS_ON_BASKET"
+export const REMOVE_SNUS_ON_BASKET:string = "REMOVE_SNUS_ON_BASKET";
+export const ORDER_FETCHING:string = "ORDER_FETCHING"

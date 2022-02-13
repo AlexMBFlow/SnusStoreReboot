@@ -7,6 +7,7 @@ import { Catalog } from "../Catalog/Catalog";
 import { Delivery } from "../Delivery/Delivery";
 import { Contacts } from "../Contacts/Contacts";
 import { FooterMain } from "../Footer/FooterMain";
+import { Order } from "../Order/Order";
 import './LayoutMain.css';
 
 // [ANT DESIGN] <Menu defaultSelectedKeys={['1']}></Menu> отображение при загрузке сайта соответствующего менюИтема по key, пока убрал
@@ -32,6 +33,10 @@ export const LayoutMain = () => {
                     <Menu.Item className='menu-item basket-wrap' style={{ marginLeft: "6rem" }} key="4">
                         <Link to="/contacts"><span className='contacts'>Контакты</span></Link>
                     </Menu.Item>
+
+                    <Menu.Item className='menu-item basket-wrap' style={{ marginLeft: "6rem" }} key="5">
+                        <Link to="/order"><span className='order'>Оформить заказ</span></Link>
+                    </Menu.Item>
                 </Menu>
             </Header>
 
@@ -42,6 +47,7 @@ export const LayoutMain = () => {
                     <Route path="/catalog" element={<Catalog />} />
                     <Route path="/delivery" element={<Delivery />} />
                     <Route path="/contacts" element={<Contacts />} />
+                    <Route path="/order" element={<Order />} />
                 </Routes>
             </Content>
 
