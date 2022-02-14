@@ -8,7 +8,6 @@ import { Delivery } from "../Delivery/Delivery";
 import { Contacts } from "../Contacts/Contacts";
 import { FooterMain } from "../Footer/FooterMain";
 import { Order } from "../Order/Order";
-//import { Pay } from "../Catalog/Pay/Pay"
 import './LayoutMain.css';
 
 // [ANT DESIGN] <Menu defaultSelectedKeys={['1']}></Menu> отображение при загрузке сайта соответствующего менюИтема по key, пока убрал
