@@ -31,7 +31,7 @@ export const Basket = () => {
 
     const handleOk = () => {
         dispatch(showBasketAC(false));
-        navigate("../pay");
+        navigate("../order");
     };
 
     const handleCancel = () => {

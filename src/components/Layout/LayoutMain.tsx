@@ -8,7 +8,7 @@ import { Delivery } from "../Delivery/Delivery";
 import { Contacts } from "../Contacts/Contacts";
 import { FooterMain } from "../Footer/FooterMain";
 import { Order } from "../Order/Order";
-import { Pay } from "../Catalog/Pay/Pay"
+//import { Pay } from "../Catalog/Pay/Pay"
 import './LayoutMain.css';
 
 // [ANT DESIGN] <Menu defaultSelectedKeys={['1']}></Menu> отображение при загрузке сайта соответствующего менюИтема по key, пока убрал
@@ -35,10 +35,6 @@ export const LayoutMain = () => {
                         <Link to="/contacts"><span className='contacts'>Контакты</span></Link>
                     </Menu.Item>
 
-                    <Menu.Item className='menu-item' style={{ marginLeft: "6rem" }} key="5">
-                        <Link to="/order"><span className='order'>Оформить заказ</span></Link>
-                    </Menu.Item>
-
                 </Menu>
             </Header>
 
@@ -50,7 +46,6 @@ export const LayoutMain = () => {
                     <Route path="/delivery" element={<Delivery />} />
                     <Route path="/contacts" element={<Contacts />} />
                     <Route path="/order" element={<Order />} />
-                    <Route path="/pay" element={<Pay />} />
                 </Routes>
             </Content>
 
