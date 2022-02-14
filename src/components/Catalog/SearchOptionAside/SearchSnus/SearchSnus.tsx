@@ -4,7 +4,7 @@ import { AutoComplete } from 'antd';
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch } from 'react-redux';
 import { inputAC } from "../../../../redux/actionCreators/inputAC/inputAC";
-import { useTypedSelector } from "../../../../redux/hooks/useTypedSelector"
+import { useTypedSelector } from "../../../../redux/hooks/useTypedSelector";
 import './SearchSnus.css';
 
 const options = [];

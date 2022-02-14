@@ -6,7 +6,9 @@ import { useDispatch } from 'react-redux';
 import { basketRemoveAC } from "../../../../redux/actionCreators/basketAC/basketAC"
 import "./BasketItem.css";
 
+
 export const BasketItem = ({ snusBasket }) => {
+    //debugger
     const dispatch = useDispatch();
     
     const removeItem = () => {

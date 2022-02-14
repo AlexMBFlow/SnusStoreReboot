@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import { Modal } from 'antd';
 import { ShoppingCartOutlined } from '@ant-design/icons';
-import { showBasketAC } from "../../../redux/actionCreators/showBasketAC/showBasketAC";
 import { useDispatch } from 'react-redux';
-import { BasketItem } from "./BasketItem/BasketItem";
 import { v4 as uuidv4 } from 'uuid';
-import { useTypedSelector } from "../../../redux/hooks/useTypedSelector"
+import { showBasketAC } from "../../../redux/actionCreators/showBasketAC/showBasketAC";
+import { BasketItem } from "./BasketItem/BasketItem";
+import { useTypedSelector } from "../../../redux/hooks/useTypedSelector";
 import "./Basket.css";
 
 export const Basket = () => {
+    let navigate = useNavigate()
     const dispatch = useDispatch()
     const { isModalVisible } = useTypedSelector(state => state.showBasket)
     const { snusBasket } = useTypedSelector(state => state.basketReducer)
@@ -29,12 +31,13 @@ export const Basket = () => {
 
     const handleOk = () => {
         dispatch(showBasketAC(false));
+        navigate("../pay");
     };
 
     const handleCancel = () => {
         dispatch(showBasketAC(false));
     };
-
+    //debugger
     return (
         <div className="catalog-basket">
             <div className="basket-ico" onClick={showModal}>
