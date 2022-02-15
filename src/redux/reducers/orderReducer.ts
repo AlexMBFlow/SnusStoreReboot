@@ -1,4 +1,4 @@
-import { ORDER_FETCHING } from "../utils/actionTypes";
+import { ORDER_FETCHING, USER_IS_ORDERED } from "../utils/actionTypes";
 
 type stepStatus = "process" | "finish" | "wait"
 
@@ -35,7 +35,7 @@ export const orderReducer = (state = initialState, action: orderAction) => {
     switch (action.type) {
         case ORDER_FETCHING:
             return { ...state, isLoading: action.isLoading }
-        case "USER_IS_ORDERED":
+        case USER_IS_ORDERED:
             return { ...state, step: [{status: action.step[0].status, color: action.step[0].color}, {status: action.step[1].status, color: action.step[1].color}]}
         default:
             return state
