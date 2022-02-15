@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Form, Input, Button, Row, Col } from 'antd';
-import { orderAC } from "../../../redux/actionCreators/orderAC/orderAC";
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from '../../../redux/hooks/useTypedSelector';
+import { orderAC } from "../../../redux/actionCreators/orderAC/orderAC";
+import { stepsAC } from "../../../redux/actionCreators/stepsAC/stepsAC";
 
 export const OrderLeft = () => {
     const dispatch = useDispatch()
@@ -19,6 +20,10 @@ export const OrderLeft = () => {
         //уведомление, что заказ принят
         setTimeout(() => {
             dispatch(orderAC(false))
+            dispatch(stepsAC([
+                {status: "finish", color: "#1890ff"},
+                {status: "process", color: "#06d44b"}
+            ]))
             setButtonText("Отправлено!🚀")
         }, 3500)
     }
