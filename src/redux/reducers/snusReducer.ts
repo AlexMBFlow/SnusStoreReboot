@@ -1,5 +1,5 @@
 import { snusStore } from "../snusStore/snusStore";
-import type { Snus } from "../snusStore/snusType"
+import type { Snus } from "../snusStore/snusType";
 
 type snusStoreType = {
     snusItems: Snus[]
