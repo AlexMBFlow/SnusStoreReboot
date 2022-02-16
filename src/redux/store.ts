@@ -7,6 +7,7 @@ import { priceReducer } from "../redux/reducers/priceReducer";
 import { showBasket } from "../redux/reducers/showBasket";
 import { basketReducer } from "../redux/reducers/basketReducer";
 import { orderReducer } from './reducers/orderReducer';
+import { userInfoReducer } from './reducers/userInfoReducer';
 
 //import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 
@@ -19,7 +20,8 @@ const rootReduser = combineReducers({
     priceReducer,
     showBasket,
     basketReducer,
-    orderReducer
+    orderReducer,
+    userInfoReducer
 })
 
 export type RootState = ReturnType<typeof rootReduser>
