@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Form, Input, Button, Row, Col } from 'antd';
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from '../../../redux/hooks/useTypedSelector';
-import { orderAC } from "../../../redux/actionCreators/orderAC/orderAC";
+import { isLoadingAC } from "../../../redux/actionCreators/orderAC/orderAC";
+import { isDisabledAC } from "../../../redux/actionCreators/orderAC/orderAC";
 import { stepsAC } from "../../../redux/actionCreators/stepsAC/stepsAC";
 import { userFirstNameAC, userSecondNameAC, userPhoneAC, userCountryAC,
     userCityAC, userAreaAC, userEmailAC, userSomeInfoAC } from "../../../redux/actionCreators/userInfoAC/userInfoAC";
@@ -12,21 +13,23 @@ export const OrderLeft = () => {
     const dispatch = useDispatch()
     const [form] = Form.useForm();
     const { isLoading } = useTypedSelector(state => state.orderReducer)
+    const { isDisabled } = useTypedSelector(state => state.orderReducer)
     const { firstName, secondName, phone, country, city,
         area, email, someInfo } = useTypedSelector(state => state.userInfoReducer)
 
     const buttonHandler = () => {
         setButtonText("Отправка...")
-        dispatch(orderAC(true)) //меняем состояние кнопки на isLoading
+        dispatch(isLoadingAC(true)) //меняем состояние кнопки на isLoading
         //потом когда получим ответ от сервера, диспатчим false и показываем
         //уведомление, что заказ принят
         setTimeout(() => {
-            dispatch(orderAC(false))
+            dispatch(isLoadingAC(false))
             dispatch(stepsAC([
                 {status: "finish", color: "#1890ff"},
                 {status: "process", color: "#06d44b"}
             ]))
             setButtonText("Отправлено!🚀")
+            dispatch(isDisabledAC(true))
         }, 3500)
     }
 
@@ -120,7 +123,7 @@ export const OrderLeft = () => {
                 </Form.Item>
 
                 <Form.Item {...buttonItemLayout}>
-                    <Button type="primary" loading={isLoading} onClick={() => buttonHandler()}>
+                    <Button disabled={isDisabled} type="primary" loading={isLoading} onClick={() => buttonHandler()}>
                         {buttonText}
                     </Button>
                 </Form.Item>
