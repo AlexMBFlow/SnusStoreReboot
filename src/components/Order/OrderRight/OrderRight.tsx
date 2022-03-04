@@ -1,10 +1,26 @@
 import React from "react";
+import { Row, Col } from "antd";
+import { useTypedSelector } from "../../../redux/hooks/useTypedSelector";
+import { OrderRightItem } from "./OrderRightItem/OrderRightItem";
+import "./OrderRight.css";
 
 export const OrderRight = () => {
+    const { snusBasket } = useTypedSelector(state => state.basketReducer)
+    //console.log(snusBasket)
     return (
-        <div className="div">
-            OrderRight
-            тут типа вся корзина, шоб чеды видели, шо они берут
-        </div>
+        <>
+            <Row gutter={[16, 16]} className="order-right">
+                <Col span={4} > Вид: </Col>
+                <Col span={4} > Название: </Col>
+                <Col span={4} > Вкус: </Col>
+                <Col span={4} > Никотин: </Col>
+                <Col span={4} > Количество: </Col>
+                <Col span={4} > Цена: </Col>
+            </Row>
+            {snusBasket.map(snus => (
+                <OrderRightItem snus={snus} />
+            ))}
+
+        </>
     )
 }

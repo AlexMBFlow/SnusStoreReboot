@@ -1,0 +1,10 @@
+.order-right {
+    min-height: 9.5rem;
+    min-width: 5rem;
+}
+
+.order-avatar {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

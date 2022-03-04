@@ -2,12 +2,12 @@ import React from 'react';
 import { Checkbox, Divider } from "antd";
 import { Tooltip } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
-import './NicotineFilter.css';
 import { useDispatch } from 'react-redux';
 import { checkedListAC } from "../../../../redux/actionCreators/checkedListAC/checkedListAC";
 import { setIndeterminateAC } from "../../../../redux/actionCreators/setIndeterminateAC/setIndeterminateAC";
 import { setCheckAllAC } from "../../../../redux/actionCreators/setCheckAllAC/setCheckAllAC";
 import { useTypedSelector } from "../../../../redux/hooks/useTypedSelector";
+import './NicotineFilter.css';
 
 
 const CheckboxGroup = Checkbox.Group;

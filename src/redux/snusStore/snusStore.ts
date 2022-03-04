@@ -13,7 +13,7 @@ export const snusStore: snusStoreType = {
             nicotine: 70,
             saturation: "Очень крепкий",
             price: 420,
-            avatar: 'https://snus-upi.ru/assets/images/products/641/small/66.jpg',
+            avatar: 'https://snus-upr.ru/assets/images/products/671/rendm-mango.jpg',
             id: 1
         },
         {
@@ -23,7 +23,7 @@ export const snusStore: snusStoreType = {
             nicotine: 70,
             saturation: "Очень крепкий",
             price: 620,
-            avatar: 'https://snus-upi.ru/assets/images/products/641/small/66.jpg',
+            avatar: 'https://snus-upr.ru/assets/images/products/671/rendm-mango.jpg',
             id: 2
         },
         {
@@ -33,7 +33,7 @@ export const snusStore: snusStoreType = {
             nicotine: 50,
             saturation: "Средний",
             price: 450,
-            avatar: 'https://snus-upi.ru/assets/images/products/641/small/66.jpg',
+            avatar: 'https://snus-upr.ru/assets/images/products/671/rendm-mango.jpg',
             id: 3
         },
         {
@@ -43,7 +43,7 @@ export const snusStore: snusStoreType = {
             nicotine: 50,
             saturation: "Крепкий",
             price: 500,
-            avatar: 'https://snus-upi.ru/assets/images/products/641/small/66.jpg',
+            avatar: 'https://snus-upr.ru/assets/images/products/671/rendm-mango.jpg',
             id: 4
         },
         {
@@ -53,7 +53,7 @@ export const snusStore: snusStoreType = {
             nicotine: 40,
             saturation: "Крепкий",
             price: 500,
-            avatar: 'https://snus-upi.ru/assets/images/products/641/small/66.jpg',
+            avatar: 'https://snus-upr.ru/assets/images/products/671/rendm-mango.jpg',
             id: 5
         },
         {
@@ -63,7 +63,7 @@ export const snusStore: snusStoreType = {
             nicotine: 60,
             saturation: "Крепкий",
             price: 400,
-            avatar: 'https://snus-upi.ru/assets/images/products/641/small/66.jpg',
+            avatar: 'https://snus-upr.ru/assets/images/products/671/rendm-mango.jpg',
             id: 6
         },
         {
@@ -73,7 +73,7 @@ export const snusStore: snusStoreType = {
             nicotine: 60,
             saturation: "Крепкий",
             price: 400,
-            avatar: 'https://snus-upi.ru/assets/images/products/641/small/66.jpg',
+            avatar: 'https://snus-upr.ru/assets/images/products/671/rendm-mango.jpg',
             id: 7
         },
         {
@@ -83,7 +83,7 @@ export const snusStore: snusStoreType = {
             nicotine: 70,
             saturation: "Очень крепкий",
             price: 420,
-            avatar: 'https://snus-upi.ru/assets/images/products/641/small/66.jpg',
+            avatar: 'https://snus-upr.ru/assets/images/products/671/rendm-mango.jpg',
             id: 8
         },
         {
@@ -93,7 +93,7 @@ export const snusStore: snusStoreType = {
             nicotine: 70,
             saturation: "Очень крепкий",
             price: 420,
-            avatar: 'https://snus-upi.ru/assets/images/products/641/small/66.jpg',
+            avatar: 'https://snus-upr.ru/assets/images/products/671/rendm-mango.jpg',
             id: 9
         },
         {
@@ -103,7 +103,7 @@ export const snusStore: snusStoreType = {
             nicotine: 70,
             saturation: "Очень крепкий",
             price: 420,
-            avatar: 'https://snus-upi.ru/assets/images/products/641/small/66.jpg',
+            avatar: 'https://snus-upr.ru/assets/images/products/671/rendm-mango.jpg',
             id: 10
         },
         {
@@ -113,7 +113,7 @@ export const snusStore: snusStoreType = {
             nicotine: 70,
             saturation: "Очень крепкий",
             price: 420,
-            avatar: 'https://snus-upi.ru/assets/images/products/641/small/66.jpg',
+            avatar: 'https://snus-upr.ru/assets/images/products/671/rendm-mango.jpg',
             id: 11
         },        {
             name: "Nictech",
@@ -122,7 +122,7 @@ export const snusStore: snusStoreType = {
             nicotine: 70,
             saturation: "Очень крепкий",
             price: 420,
-            avatar: 'https://snus-upi.ru/assets/images/products/641/small/66.jpg',
+            avatar: 'https://snus-upr.ru/assets/images/products/671/rendm-mango.jpg',
             id: 12
         }
     ]
