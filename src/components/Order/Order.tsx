@@ -8,7 +8,7 @@ import "./Order.css";
 
 export const Order = () => {
     const { Step } = Steps;
-    const { step } = useTypedSelector(state => state.orderReducer)
+    const { step } = useTypedSelector(state => state.stepReducer)
 
     const [ pay, feedBack ] = step
     //#1890ff синий
@@ -17,7 +17,7 @@ export const Order = () => {
     //Не понятно, почему последний Step не красится в зеленый, не зависит от статуса, ведь у pay сначала process и он зеленый,
     //а потом этот же статус меняется на finish и все работает. у последнего даже при wait ничего не менялось, тестил в начале, странная ситуация
     return (
-        <>
+        <div className="order-page">
             <Row>
                 <Col span={24}>
                     <Steps>
@@ -36,6 +36,6 @@ export const Order = () => {
                     <OrderRight />
                 </Col>
             </Row>
-        </>
+        </div>
     );
 }
