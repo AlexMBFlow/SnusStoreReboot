@@ -2,21 +2,7 @@ import React from "react";
 import { Row, Col } from "antd";
 import "./OrderRightItem.css";
 
-/* type OrderRightItemType = {
-    name: string;
-    taste: string;
-    packs: number;
-    nicotine: number
-    saturation: string;
-    price: number
-    avatar: string;
-    id: number | string;
-} */
-
-export const OrderRightItem = ({snus}) => {
-    console.log("snusBasket в OrderRightItem")
-    console.log(snus)
-    //debugger
+export const OrderRightItem = ({ snus }) => {
     return (
         <>
             <Row gutter={[16, 16]} className="order-right">

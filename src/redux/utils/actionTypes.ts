@@ -18,3 +18,4 @@ export const USER_ORDER_AREA: string = "USER_ORDER_AREA";
 export const USER_ORDER_EMAIL: string = "USER_ORDER_EMAIL";
 export const USER_ORDER_SOME_INFO: string = "USER_ORDER_SOME_INFO";
 export const ORDER_IS_DISABLED: string = "ORDER_IS_DISABLED";
+export const TEXT_IS_ORDERED: string = "TEXT_IS_ORDERED"

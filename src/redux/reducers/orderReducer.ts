@@ -1,4 +1,4 @@
-import { ORDER_IS_LOADING, ORDER_IS_DISABLED, USER_IS_ORDERED } from "../utils/actionTypes";
+import { ORDER_IS_LOADING, ORDER_IS_DISABLED, USER_IS_ORDERED, TEXT_IS_ORDERED } from "../utils/actionTypes";
 
 type stepStatus = "process" | "finish" | "wait"
 
@@ -12,8 +12,9 @@ type stepItem = {
 
 type defaultState = {
     isLoading: boolean
-    step: stepItem[]
     isDisabled: boolean
+    buttonText: string
+    step: stepItem[]
 }
 
 type orderAction = {
@@ -21,11 +22,13 @@ type orderAction = {
     isLoading?: boolean
     step?: stepItem
     isDisabled?: boolean
+    text: string
 }
 
 const initialState: defaultState = {
     isLoading: false,
     isDisabled: false,
+    buttonText: "Отправить",
     step: [
         { status: "process", color: "#06d44b" }, //pay
         { status: "wait", color: "#bfbfbf" }    //feedBack
@@ -42,7 +45,9 @@ export const orderReducer = (state = initialState, action: orderAction) => {
             return {...state, isDisabled: action.isDisabled}
         case USER_IS_ORDERED:
             return { ...state, step: [{status: action.step[0].status, color: action.step[0].color}, {status: action.step[1].status, color: action.step[1].color}]}
-        default:
+        case TEXT_IS_ORDERED:
+                return {...state, buttonText: action.text}
+            default:
             return state
     }
 }

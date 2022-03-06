@@ -7,3 +7,8 @@ export type isDisabled = {
     type: string
     isDisabled: boolean
 }
+
+export type setButtonTextType = {
+    type: string
+    text: string
+}
