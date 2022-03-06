@@ -6,21 +6,24 @@ import "./OrderRight.css";
 
 export const OrderRight = () => {
     const { snusBasket } = useTypedSelector(state => state.basketReducer)
-    //console.log(snusBasket)
     return (
         <>
-            <Row gutter={[16, 16]} className="order-right">
-                <Col span={4} > Вид: </Col>
-                <Col span={4} > Название: </Col>
-                <Col span={4} > Вкус: </Col>
-                <Col span={4} > Никотин: </Col>
-                <Col span={4} > Количество: </Col>
-                <Col span={4} > Цена: </Col>
-            </Row>
+            {snusBasket.length === 0 ?
+                <div className="empry-order">
+                    Ваша корзина пуста
+                </div>
+                : <Row gutter={[16, 16]} className="order-right">
+                    <Col span={4} > Вид: </Col>
+                    <Col span={4} > Название: </Col>
+                    <Col span={4} > Вкус: </Col>
+                    <Col span={4} > Никотин: </Col>
+                    <Col span={4} > Количество: </Col>
+                    <Col span={4} > Цена: </Col>
+                </Row>
+            }
             {snusBasket.map(snus => (
                 <OrderRightItem snus={snus} />
             ))}
-
         </>
     )
 }

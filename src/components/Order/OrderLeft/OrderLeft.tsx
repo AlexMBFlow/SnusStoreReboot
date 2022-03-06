@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Form, Input, Button, Row, Col, message, notification } from 'antd';
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from '../../../redux/hooks/useTypedSelector';
@@ -10,6 +10,8 @@ import { userFirstNameAC, userSecondNameAC, userPhoneAC, userCountryAC,
     userCityAC, userAreaAC, userEmailAC, userSomeInfoAC } from "../../../redux/actionCreators/userInfoAC/userInfoAC";
 
 export const OrderLeft = () => {
+    const [emailDirty, setEmailDirty] = useState(false)
+    const [emailError, setEmailError] = useState("E-mail не может быть пустым")
     const dispatch = useDispatch()
     const [form] = Form.useForm();
     const { snusBasket } = useTypedSelector(state => state.basketReducer)
@@ -74,6 +76,12 @@ export const OrderLeft = () => {
 
     const emailHandler = e => {
         dispatch(userEmailAC(e.target.value))
+        const re = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
+        if (!re.test(String(e.target.value).toLocaleLowerCase())) {
+            setEmailError("Некорректный E-mail")
+        } else {
+            setEmailError("")
+        }
     }
 
     const someInfoHandler = e => {
@@ -94,6 +102,10 @@ export const OrderLeft = () => {
             offset: 12,
         },
     };
+
+    const blurHandler = (e) => {
+        setEmailDirty(true)
+    }
 
     return (
         <>
@@ -136,9 +148,9 @@ export const OrderLeft = () => {
                 <Form.Item label="Район">
                     <Input value={area} onChange={areaHandler} placeholder="Гетто" />
                 </Form.Item>
-
+                {(emailDirty && emailError) && <div style={{color: "red"}}>{emailError}</div>}
                 <Form.Item label="E-mail">
-                    <Input value={email} onChange={emailHandler} placeholder="example@gmail.com" />
+                    <Input onBlur={e => blurHandler(e)} value={email} onChange={emailHandler} placeholder="example@gmail.com" />
                 </Form.Item>
 
                 <Form.Item label="Примечания">
@@ -150,7 +162,7 @@ export const OrderLeft = () => {
                         {buttonText}
                     </Button>
                 </Form.Item>
-                
+
             </Form>
         </>
     )
