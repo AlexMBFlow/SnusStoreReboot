@@ -30,7 +30,7 @@ export const OrderRightItem = ({ snus }) => {
                 </Col>
                 <Col className="order-price" span={4}>
                     <div className="order-price__wrap order-item">
-                        <div className="order-price__inner">{snus.price}</div>
+                        <div className="order-price__inner">{snus.price}₽</div>
                     </div>
                 </Col>
             </Row>

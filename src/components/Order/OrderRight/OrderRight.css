@@ -1,3 +1,17 @@
 .order-right-header {
     text-align: center;
+    font-size: 1.1rem;
+    /* font-weight: bold */
+}
+
+.order-right-item {
+    font-size: 1.05rem;
+}
+
+.order-right-sum {
+    text-align: center;
+}
+
+.order-right-sum-price {
+    font-weight: bold;
 }
