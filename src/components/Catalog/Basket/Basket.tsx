@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Modal } from 'antd';
 import { ShoppingCartOutlined } from '@ant-design/icons';
@@ -7,11 +7,17 @@ import { v4 as uuidv4 } from 'uuid';
 import { showBasketAC } from "../../../redux/actionCreators/showBasketAC/showBasketAC";
 import { BasketItem } from "./BasketItem/BasketItem";
 import { useTypedSelector } from "../../../redux/hooks/useTypedSelector";
+import { getLocalStorage } from "../../../redux/utils/localStorageManager/getLocalStorage";
+import { getLocalStorageAC } from "../../../redux/actionCreators/getLocalStorageAC/getLocalStorageAC";
 import "./Basket.css";
 
 export const Basket = () => {
-    let navigate = useNavigate()
     const dispatch = useDispatch()
+    useEffect( () => {
+        const storage = getLocalStorage()
+        dispatch(getLocalStorageAC(storage))
+    })
+    let navigate = useNavigate()
     const { isModalVisible } = useTypedSelector(state => state.showBasket)
     const { snusBasket } = useTypedSelector(state => state.basketReducer)
     const { totalPrice } = useTypedSelector(state => state.basketReducer)
