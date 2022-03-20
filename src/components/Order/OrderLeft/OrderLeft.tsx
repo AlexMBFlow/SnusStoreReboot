@@ -10,6 +10,7 @@ import {
     userFirstNameAC, userSecondNameAC, userPhoneAC, userCountryAC,
     userCityAC, userAreaAC, userEmailAC, userSomeInfoAC
 } from "../../../redux/actionCreators/userInfoAC/userInfoAC";
+import "./OrderLeft.css";
 
 export const OrderLeft = () => {
     const emailRef = useRef(null) //ссылка на инпут с e-mail'ом
@@ -35,7 +36,6 @@ export const OrderLeft = () => {
                 description: "Ваша корзина пуста, пожалуйста, заполните её",
                 placement: "bottomRight"
             })
-            //message.warning('Ваша корзина пуста! Пожалуйста, заполните её:)');
             return
         }
 
@@ -160,7 +160,7 @@ export const OrderLeft = () => {
 
     return (
         <div className="order-form">
-            <Row>
+            <Row className="order-form-title">
                 <Col span={6}></Col>
                 <Col span={6}></Col>
                 <Col span={12}>
