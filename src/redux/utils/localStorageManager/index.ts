@@ -14,7 +14,7 @@ export const getLocalStorage = () => {
     const result = []
     for (let i = 0; i < localStorage.length; i++) {
         let key = localStorage.key(i)
-        console.log()
+        console.log(key)
         result.push(key)
     }
     console.log(result)
