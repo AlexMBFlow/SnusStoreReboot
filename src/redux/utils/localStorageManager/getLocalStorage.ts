@@ -1,8 +1,5 @@
-/* import { useDispatch } from "react-redux";
-import { getLocalStorageAC } from "../../actionCreators/getLocalStorageAC/getLocalStorageAC";
-import { bindActionCreators } from 'redux';
- */
-export const getLocalStorage = () => {
+
+export const getLocalStorage: Function = () => {
     const result = []
     for (let i = 0; i < localStorage.length; i++) {
         let key = localStorage.key(i)
@@ -10,8 +7,3 @@ export const getLocalStorage = () => {
     }
     return result
 }
-
-/* export const useLocalStorage = () => {
-    const dispatch = useDispatch()
-    return bindActionCreators(getLocalStorageAC, dispatch)
-} */
