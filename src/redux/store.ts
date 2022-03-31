@@ -1,4 +1,5 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware  } from 'redux';
+import thunk from 'redux-thunk';
 import { composeWithDevTools } from "redux-devtools-extension";
 import { snusReducer } from "./reducers/snusReducer";
 import { inputReducer } from "../redux/reducers/inputReducer";
@@ -9,6 +10,7 @@ import { basketReducer } from "../redux/reducers/basketReducer";
 import { orderReducer } from './reducers/orderReducer';
 import { userInfoReducer } from './reducers/userInfoReducer';
 import { stepReducer } from './reducers/stepReducer';
+
 
 //import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 
@@ -28,4 +30,6 @@ const rootReduser = combineReducers({
 
 export type RootState = ReturnType<typeof rootReduser>
 
-export const store = createStore(rootReduser, composeWithDevTools())
+export const store = createStore(rootReduser, composeWithDevTools(
+    applyMiddleware(thunk)
+))

@@ -1,4 +1,4 @@
-import type { Snus } from "./snusType"
+import type { Snus } from "./snusType";
 
 type snusStoreType = {
     snusItems: Snus[]

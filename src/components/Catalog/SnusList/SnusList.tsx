@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid'; 
 import { SnusItem } from './SnusItem/SnusItem';
 import { useTypedSelector } from "../../../redux/hooks/useTypedSelector";
+import { getSnus } from '../../../api/getSnus';
+import { useDispatch } from 'react-redux';
 import './SnusList.css';
 
 export const SnusList = () => {
+    const dispatch = useDispatch()
+    useEffect( () => {
+        async function aaa() {
+            dispatch( await getSnus())
+        }
+        aaa()
+    }, [])
     const { snusItems } = useTypedSelector(state => state.snusReducer);
     const { value } = useTypedSelector(state => state.inputReducer);
     const { defaultCheckedList } = useTypedSelector(state => state.nicotineReducer); //selectedPrice

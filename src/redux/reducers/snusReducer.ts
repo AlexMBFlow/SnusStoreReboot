@@ -1,4 +1,4 @@
-import { snusStore } from "../snusStore/snusStore";
+//import { snusStore } from "../snusStore/snusStore";
 import type { Snus } from "../snusStore/snusType";
 
 type snusStoreType = {
@@ -9,12 +9,15 @@ type snusReducerACType = {
     type: string
 }
 
-const initialState: snusStoreType = {...snusStore}
+//const initialState: snusStoreType = {...snusStore}
+const initialState: snusStoreType = {
+    snusItems: []
+}
 
-export const snusReducer = (state = initialState, action: snusReducerACType) => {
+export const snusReducer = (state = initialState, action/* : snusReducerACType */) => {
     switch (action.type) {
         case "ADD":
-            return { ...state}
+            return { ...state, snusItems: action.data.snusItems}
         case "SNUS_SEARCH_TEST":
             return { ...state}
         default:

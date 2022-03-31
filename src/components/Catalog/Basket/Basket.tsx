@@ -13,10 +13,10 @@ import "./Basket.css";
 
 export const Basket = () => {
     const dispatch = useDispatch()
-    useEffect( () => {
+/*     useEffect( () => {
         const storage = getLocalStorage()
         dispatch(getLocalStorageAC(storage))
-    })
+    }) */
     let navigate = useNavigate()
     const { isModalVisible } = useTypedSelector(state => state.showBasket)
     const { snusBasket } = useTypedSelector(state => state.basketReducer)
