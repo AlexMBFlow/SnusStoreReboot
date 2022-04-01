@@ -5,7 +5,8 @@ import './SearchOptionTop.css';
 export const SearchOptionTop = () => {
     return (
         <div className='catalog-info'>
-            <span className='catalog-info-text'>Каталог снюса</span>
+            <div className="logo"></div>
+            <div className="catalog-title">Вкид.рф</div>
         </div>
     )
 }

@@ -7,7 +7,7 @@ import './SearchOptionAside.css';
 
 export const SearchOptionAside = () => {
     return (
-        <div className='search-options-aside'>
+        <div className='search-options-aside'>            
             <SearchSnus/>
             <PriceFilter/>
             <NicotineFilter/>

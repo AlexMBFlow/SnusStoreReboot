@@ -3,4 +3,21 @@
     padding-top: 0.5rem;
     font-size: 1.2rem;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 2rem;
+}
+
+.logo {
+    width: 45px;
+    height: 55px;
+    background-image: url("./assets/logo.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.catalog-title {
+    padding-left: 1rem;
+    font-family: 'Indie Flower', cursive;
 }

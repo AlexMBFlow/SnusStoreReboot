@@ -1,11 +1,11 @@
 .order-right-header {
     text-align: center;
     font-size: 1.1rem;
-    /* font-weight: bold */
 }
 
 .order-right-item {
     font-size: 1.05rem;
+    padding-top: 1rem;
 }
 
 .order-right-sum {

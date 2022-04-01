@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, message } from 'antd';
+import { Button, message, Rate } from 'antd';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { basketAddAC } from "../../../../redux/actionCreators/basketAC/basketAC";
@@ -12,7 +12,7 @@ export const SnusItem = ({ snusProps }) => {
         //чтобы у итемов, которые лежат в корзине, были разные id, иначе
         //если добавить 2 одинаковых корвуса, и нажать удалить один,
         //удалятся все корвусы, потому что у них одинавые id, ведь проверка идет по id
-        const snusPropsWithNewId = {...snusProps, id: uuidv4()} 
+        const snusPropsWithNewId = { ...snusProps, id: uuidv4() }
         dispatch(basketAddAC(snusPropsWithNewId))
         message.success('Добавлено в корзину', 0.85);
     };
@@ -28,6 +28,7 @@ export const SnusItem = ({ snusProps }) => {
                 />
                 <div className="snus-item__title description-center">{snusProps.name}</div>
                 <div className="snus-item__taste description-center">{snusProps.taste}</div>
+                <div className="snus-item__rate description-center"><Rate disabled defaultValue={snusProps.rate} /></div>
                 <div className="snus-item__info">
                     <div className="snus-item__packs description-center">
                         <span className='gray'>Пакетиков: </span>{snusProps.packs} шт</div>
