@@ -11,10 +11,10 @@ export const SnusList = () => {
     const dispatch = useDispatch()
     useEffect( () => {
         /* sendOrder() */
-        async function aaa() {
+        async function wrap() {
             dispatch( await getSnus())
         }
-        aaa()
+        wrap()
     }, [])
     const { snusItems } = useTypedSelector(state => state.snusReducer);
     const { value } = useTypedSelector(state => state.inputReducer);
