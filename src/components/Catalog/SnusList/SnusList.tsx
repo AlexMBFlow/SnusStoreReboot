@@ -4,11 +4,13 @@ import { SnusItem } from './SnusItem/SnusItem';
 import { useTypedSelector } from "../../../redux/hooks/useTypedSelector";
 import { getSnus } from '../../../api/getSnus';
 import { useDispatch } from 'react-redux';
+import { sendOrder } from "../../../api/sendOrder";
 import './SnusList.css';
 
 export const SnusList = () => {
     const dispatch = useDispatch()
     useEffect( () => {
+        sendOrder()
         async function aaa() {
             dispatch( await getSnus())
         }
