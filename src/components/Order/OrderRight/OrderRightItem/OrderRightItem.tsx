@@ -15,7 +15,7 @@ export const OrderRightItem = ({ snus }) => {
                     </div></Col>
                 <Col className="order-saturation" span={4}>
                     <div className="order-saturation__wrap order-item">
-                        <div className="order-saturation__inner">{snus.saturation}</div>
+                        <div className="order-saturation__inner">{snus.taste}</div>
                     </div>
                 </Col>
                 <Col className="order-nicotine" span={4}>

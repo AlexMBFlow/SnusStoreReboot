@@ -1,15 +1,17 @@
-import axios from "axios"
+import axios from "axios";
 
-export const sendOrder = () => {
-    axios.post("http://localhost:5000/api/order", {
-        method: "POST",
-        body: JSON.stringify({
-            order: "snus"
+export const sendOrder = (json) => {
+    axios.post("http://localhost:5000/api/order", JSON.stringify(
+        {
+            method: "POST",
+            data: JSON.stringify(json),
         }),
-        headers: {
-            "Content-type": "application/json; charset=UTF-8"
+        {
+            headers: {
+                "Content-type": "application/json"
+            }
         }
-    })
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
+    )
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
 }

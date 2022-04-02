@@ -6,11 +6,15 @@ import { isLoadingAC } from "../../../redux/actionCreators/orderAC/orderAC";
 import { isDisabledAC } from "../../../redux/actionCreators/orderAC/orderAC";
 import { stepsAC } from "../../../redux/actionCreators/stepsAC/stepsAC";
 import { setButtonTextAC } from "../../../redux/actionCreators/orderAC/orderAC";
+import { sendOrder } from "../../../api/sendOrder";
+
 import {
     userFirstNameAC, userSecondNameAC, userPhoneAC, userCountryAC,
     userCityAC, userAreaAC, userEmailAC, userSomeInfoAC
 } from "../../../redux/actionCreators/userInfoAC/userInfoAC";
 import "./OrderLeft.css";
+
+
 
 export const OrderLeft = () => {
     const emailRef = useRef(null) //ссылка на инпут с e-mail'ом
@@ -58,6 +62,7 @@ export const OrderLeft = () => {
         }
 //89009518736 qwertyu@yandex.ru
         dispatch(setButtonTextAC("Отправка..."))
+        sendOrder(snusBasket)
         dispatch(isLoadingAC(true)) //меняем состояние кнопки на isLoading т.е. true
         //потом когда получим ответ от сервера, диспатчим false и показываем
         //уведомление, что заказ принят
