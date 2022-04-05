@@ -8,6 +8,7 @@ type snusStoreType = {
 
 type snusReducerACType = {
     type: string
+    data: Snus[]
 }
 
 //const initialState: snusStoreType = {...snusStore}
@@ -15,10 +16,10 @@ const initialState: snusStoreType = {
     snusItems: []
 }
 
-export const snusReducer = (state = initialState, action/* : snusReducerACType */) => {
+export const snusReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_SNUS_FROM_FETCH:
-            return { ...state, snusItems: action.data.snusItems}
+            return { ...state, snusItems: action.data}
         case "SNUS_SEARCH_TEST":
             return { ...state}
         default:

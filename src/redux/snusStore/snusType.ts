@@ -1,10 +1,11 @@
 export type Snus = {
-        name: string;
-        taste: string;
-        packs: number;
-        nicotine: number
-        saturation: string;
-        price: number
-        avatar: string;
-        id: number;
+        name: string | null
+        taste: string | null
+        packs: number | null
+        nicotine: number | null
+        saturation: string | null
+        price: number | null
+        avatar: string | null
+        _id: string | null
+        rate: number | null
 }

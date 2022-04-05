@@ -24,7 +24,7 @@ export const basketReducer = (state = initialState, action: basketAction) => {
         case ADD_SNUS_ON_BASKET:
             return {...state, snusBasket: [...state.snusBasket, action.item], totalPrice: state.totalPrice + action.item.price}
         case REMOVE_SNUS_ON_BASKET:
-            return {...state, snusBasket: state.snusBasket.filter( (el: Snus) => el.id !== action.item.id), totalPrice: state.totalPrice - action.item.price}
+            return {...state, snusBasket: state.snusBasket.filter( (el: Snus) => el._id !== action.item._id), totalPrice: state.totalPrice - action.item.price}
         case SET_ON_BASKET_FROM_LOCALSTORAGE:
             return {...state, snusBasket: action.storage}
         default:

@@ -43,7 +43,6 @@ export const Basket = () => {
     const handleCancel = () => {
         dispatch(showBasketAC(false));
     };
-    //debugger
     return (
         <div className="catalog-basket">
             <div className="basket-ico" onClick={showModal}>

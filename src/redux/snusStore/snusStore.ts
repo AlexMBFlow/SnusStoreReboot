@@ -1,4 +1,4 @@
-import type { Snus } from "./snusType";
+/* import type { Snus } from "./snusType";
 
 type snusStoreType = {
     snusItems: Snus[]
@@ -14,7 +14,7 @@ export const snusStore: snusStoreType = {
             saturation: "Очень крепкий",
             price: 420,
             avatar: 'https://snus-upr.ru/assets/images/products/671/rendm-mango.jpg',
-            id: 1
+            _id: 
         },
         {
             name: "Nictech",
@@ -24,7 +24,7 @@ export const snusStore: snusStoreType = {
             saturation: "Очень крепкий",
             price: 620,
             avatar: 'https://snus-upr.ru/assets/images/products/671/rendm-mango.jpg',
-            id: 2
+            _id: 2
         },
         {
             name: "Corvus",
@@ -34,7 +34,7 @@ export const snusStore: snusStoreType = {
             saturation: "Средний",
             price: 450,
             avatar: 'https://snus-upr.ru/assets/images/products/671/rendm-mango.jpg',
-            id: 3
+            _id: 3
         },
         {
             name: "RED",
@@ -44,7 +44,7 @@ export const snusStore: snusStoreType = {
             saturation: "Крепкий",
             price: 500,
             avatar: 'https://snus-upr.ru/assets/images/products/671/rendm-mango.jpg',
-            id: 4
+            _id: 4
         },
         {
             name: "Odens",
@@ -54,7 +54,7 @@ export const snusStore: snusStoreType = {
             saturation: "Крепкий",
             price: 500,
             avatar: 'https://snus-upr.ru/assets/images/products/671/rendm-mango.jpg',
-            id: 5
+            _id: 5
         },
         {
             name: "Alfa",
@@ -64,7 +64,7 @@ export const snusStore: snusStoreType = {
             saturation: "Крепкий",
             price: 400,
             avatar: 'https://snus-upr.ru/assets/images/products/671/rendm-mango.jpg',
-            id: 6
+            _id: 6
         },
         {
             name: "Alfa",
@@ -74,7 +74,7 @@ export const snusStore: snusStoreType = {
             saturation: "Крепкий",
             price: 400,
             avatar: 'https://snus-upr.ru/assets/images/products/671/rendm-mango.jpg',
-            id: 7
+            _id: 7
         },
         {
             name: "Deluxe",
@@ -84,7 +84,7 @@ export const snusStore: snusStoreType = {
             saturation: "Очень крепкий",
             price: 420,
             avatar: 'https://snus-upr.ru/assets/images/products/671/rendm-mango.jpg',
-            id: 8
+            _id: 8
         },
         {
             name: "Nictech",
@@ -94,7 +94,7 @@ export const snusStore: snusStoreType = {
             saturation: "Очень крепкий",
             price: 420,
             avatar: 'https://snus-upr.ru/assets/images/products/671/rendm-mango.jpg',
-            id: 9
+            _id: 9
         },
         {
             name: "Nictech",
@@ -104,7 +104,7 @@ export const snusStore: snusStoreType = {
             saturation: "Очень крепкий",
             price: 420,
             avatar: 'https://snus-upr.ru/assets/images/products/671/rendm-mango.jpg',
-            id: 10
+            _id: 10
         },
         {
             name: "Nictech",
@@ -114,7 +114,7 @@ export const snusStore: snusStoreType = {
             saturation: "Очень крепкий",
             price: 420,
             avatar: 'https://snus-upr.ru/assets/images/products/671/rendm-mango.jpg',
-            id: 11
+            _id: 11
         },        {
             name: "Nictech",
             taste: "Черника",
@@ -123,7 +123,7 @@ export const snusStore: snusStoreType = {
             saturation: "Очень крепкий",
             price: 420,
             avatar: 'https://snus-upr.ru/assets/images/products/671/rendm-mango.jpg',
-            id: 12
+            _id: 12
         }
     ]
-}
+} */

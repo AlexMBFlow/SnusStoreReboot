@@ -7,21 +7,20 @@ import { useDispatch } from 'react-redux';
 //import { sendOrder } from "../../../api/sendOrder";
 import './SnusList.css';
 
+const getSnusListData = async (dispatch) => {
+    dispatch( await getSnus())
+}
+
 export const SnusList = () => {
     const dispatch = useDispatch()
     useEffect( () => {
-        /* sendOrder() */
-        async function wrap() {
-            dispatch( await getSnus())
-        }
-        wrap()
-    }, [])
+        getSnusListData(dispatch)
+    }, [dispatch])
     const { snusItems } = useTypedSelector(state => state.snusReducer);
     const { value } = useTypedSelector(state => state.inputReducer);
     const { defaultCheckedList } = useTypedSelector(state => state.nicotineReducer); //selectedPrice
     const { selectedPrice } = useTypedSelector(state => state.priceReducer);
     const { sort } = useTypedSelector(state => state.priceReducer);
-
     const filteredPrice = snusItems.filter(el => { // фильтруем массив объектов со всем снюсом по значениям из слайдера
         if (el.price > selectedPrice[0] && el.price < selectedPrice[1]) {
             return true

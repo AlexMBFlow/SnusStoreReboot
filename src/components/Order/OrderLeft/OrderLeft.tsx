@@ -7,14 +7,11 @@ import { isDisabledAC } from "../../../redux/actionCreators/orderAC/orderAC";
 import { stepsAC } from "../../../redux/actionCreators/stepsAC/stepsAC";
 import { setButtonTextAC } from "../../../redux/actionCreators/orderAC/orderAC";
 import { sendOrder } from "../../../api/sendOrder";
-
 import {
     userFirstNameAC, userSecondNameAC, userPhoneAC, userCountryAC,
     userCityAC, userAreaAC, userEmailAC, userSomeInfoAC
 } from "../../../redux/actionCreators/userInfoAC/userInfoAC";
 import "./OrderLeft.css";
-
-
 
 export const OrderLeft = () => {
     const emailRef = useRef(null) //ссылка на инпут с e-mail'ом
@@ -27,7 +24,7 @@ export const OrderLeft = () => {
     const [phoneError, setPhoneError] = useState(false)
 
     const dispatch = useDispatch()
-    const [form] = Form.useForm();
+    const [ form ] = Form.useForm();
     const { snusBasket } = useTypedSelector(state => state.basketReducer)
     const { isLoading, buttonText, isDisabled } = useTypedSelector(state => state.orderReducer)
     const { firstName, secondName, phone, country, city,
@@ -62,7 +59,19 @@ export const OrderLeft = () => {
         }
 //89009518736 qwertyu@yandex.ru
         dispatch(setButtonTextAC("Отправка..."))
-        sendOrder(snusBasket)
+        sendOrder({
+            basket: snusBasket,
+            info: {
+                firstName: firstName,
+                secondName: secondName,
+                phone: phone,
+                country: country,
+                city: city,
+                area: area,
+                email: email,
+                someInfo: someInfo
+            }
+        })
         dispatch(isLoadingAC(true)) //меняем состояние кнопки на isLoading т.е. true
         //потом когда получим ответ от сервера, диспатчим false и показываем
         //уведомление, что заказ принят
@@ -215,7 +224,7 @@ export const OrderLeft = () => {
                 </Form.Item>
 
                 <Form.Item {...buttonItemLayout}>
-                    <Button disabled={isDisabled} type="primary" loading={isLoading} onClick={() => buttonHandler()}>
+                    <Button disabled={false} type="primary" loading={isLoading} onClick={() => buttonHandler()}>
                         {buttonText}
                     </Button>
                 </Form.Item>
