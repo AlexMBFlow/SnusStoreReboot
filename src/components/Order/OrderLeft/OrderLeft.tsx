@@ -224,7 +224,7 @@ export const OrderLeft = () => {
                 </Form.Item>
 
                 <Form.Item {...buttonItemLayout}>
-                    <Button disabled={false} type="primary" loading={isLoading} onClick={() => buttonHandler()}>
+                    <Button disabled={isDisabled} type="primary" loading={isLoading} onClick={() => buttonHandler()}>
                         {buttonText}
                     </Button>
                 </Form.Item>
