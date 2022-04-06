@@ -1,13 +1,26 @@
 
-import React from 'react';
+import React, { FC } from 'react';
 import { CloseOutlined } from '@ant-design/icons';
 import { message } from 'antd';
 import { useDispatch } from 'react-redux';
 import { basketRemoveAC } from "../../../../redux/actionCreators/basketAC/basketAC";
 import "./BasketItem.css";
 
-export const BasketItem = ({ snusBasket }) => {
-    //debugger
+type TSnusItem = {
+    snusBasket: {
+    name: string
+    taste: string
+    packs: number
+    nicotine: number
+    saturation: string
+    price: number
+    avatar: string
+    rate: number
+    _id: any
+    }
+}
+
+export const BasketItem: FC<TSnusItem>= ({ snusBasket }) => {
     const dispatch = useDispatch();
     
     const removeItem = () => {

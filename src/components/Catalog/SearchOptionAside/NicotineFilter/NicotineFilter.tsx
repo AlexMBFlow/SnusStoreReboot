@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Checkbox, Divider } from "antd";
 import { Tooltip } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
@@ -12,7 +12,7 @@ import './NicotineFilter.css';
 
 const CheckboxGroup = Checkbox.Group;
 
-export const NicotineFilter = () => {
+export const NicotineFilter: FC = () => {
     const dispatch = useDispatch()
     const tooltipText = '0-20мг легкий, 20-40мг средний, 40-60мг крепкий, 60+мг очень крепкий';
 

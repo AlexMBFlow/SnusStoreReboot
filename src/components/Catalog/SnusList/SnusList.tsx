@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid'; 
 import { SnusItem } from './SnusItem/SnusItem';
 import { useTypedSelector } from "../../../redux/hooks/useTypedSelector";
@@ -11,7 +11,7 @@ const getSnusListData = async (dispatch) => {
     dispatch( await getSnus())
 }
 
-export const SnusList = () => {
+export const SnusList: FC = () => {
     const dispatch = useDispatch()
     useEffect( () => {
         getSnusListData(dispatch)

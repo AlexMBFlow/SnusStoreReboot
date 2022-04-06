@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { Row, Col, Result, Button, Divider } from "antd";
 import { useTypedSelector } from "../../../redux/hooks/useTypedSelector";
@@ -6,7 +6,7 @@ import { OrderRightItem } from "./OrderRightItem/OrderRightItem";
 import { v4 as uuidv4 } from 'uuid';
 import "./OrderRight.css";
 
-export const OrderRight = () => {
+export const OrderRight: FC = () => {
     let navigate = useNavigate()
     const { snusBasket } = useTypedSelector(state => state.basketReducer)
     const { totalPrice } = useTypedSelector(state => state.basketReducer)

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, FC } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Modal } from 'antd';
 import { ShoppingCartOutlined } from '@ant-design/icons';
@@ -11,7 +11,7 @@ import { getLocalStorage } from "../../../redux/utils/localStorageManager/getLoc
 import { getLocalStorageAC } from "../../../redux/actionCreators/getLocalStorageAC/getLocalStorageAC";
 import "./Basket.css";
 
-export const Basket = () => {
+export const Basket: FC = () => {
     const dispatch = useDispatch()
 /*     useEffect( () => {
         const storage = getLocalStorage()

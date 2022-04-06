@@ -1,8 +1,22 @@
-import React from "react";
+import React, { FC } from "react";
 import { Row, Col } from "antd";
 import "./OrderRightItem.css";
 
-export const OrderRightItem = ({ snus }) => {
+type TSnusItem = {
+    snus: {
+    name: string
+    taste: string
+    packs: number
+    nicotine: number
+    saturation: string
+    price: number
+    avatar: string
+    rate: number
+    _id: any
+    }
+}
+
+export const OrderRightItem: FC<TSnusItem> = ({ snus }) => {
     return (
         <>
             <Row gutter={[16, 16]} className="order-right-item">

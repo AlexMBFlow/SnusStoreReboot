@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { Layout, Menu } from 'antd';
 import { Route, Routes, Link } from 'react-router-dom';
 import { Welcome } from "../Welcume/Welcome";
@@ -12,7 +12,7 @@ import './LayoutMain.css';
 
 // [ANT DESIGN] <Menu defaultSelectedKeys={['1']}></Menu> отображение при загрузке сайта соответствующего менюИтема по key, пока убрал
 
-export const LayoutMain = () => {
+export const LayoutMain: FC = () => {
     const { Header, Content, Footer } = Layout;
     return (
         <Layout>

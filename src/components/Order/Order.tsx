@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { Row, Col, Steps } from 'antd';
 import { OrderLeft } from './OrderLeft/OrderLeft';
 import { OrderRight } from './OrderRight/OrderRight';
@@ -6,7 +6,7 @@ import { SolutionOutlined, UserOutlined, SmileOutlined, CreditCardTwoTone } from
 import { useTypedSelector } from '../../redux/hooks/useTypedSelector';
 import "./Order.css";
 
-export const Order = () => {
+export const Order: FC = () => {
     const { Step } = Steps;
     const { step } = useTypedSelector(state => state.stepReducer)
 

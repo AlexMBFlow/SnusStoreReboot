@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Select } from 'antd';
 import { Slider } from 'antd';
 import { Divider } from 'antd';
@@ -8,7 +8,7 @@ import { setSortPriceAC } from "../../../../redux/actionCreators/setSortPriceAC/
 import { useTypedSelector } from "../../../../redux/hooks/useTypedSelector";
 import './PriceFilter.css';
 
-export const PriceFilter = () => {
+export const PriceFilter: FC = () => {
     const dispatch = useDispatch()
 
     const {defaultPrice} = useTypedSelector(state => state.priceReducer)

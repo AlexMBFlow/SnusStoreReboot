@@ -1,11 +1,25 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Button, message, Rate } from 'antd';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { basketAddAC } from "../../../../redux/actionCreators/basketAC/basketAC";
 import './SnusItem.css';
 
-export const SnusItem = ({ snusProps }) => {
+type TSnusItem = {
+    snusProps: {
+    name: string
+    taste: string
+    packs: number
+    nicotine: number
+    saturation: string
+    price: number
+    avatar: string
+    rate: number
+    _id: any
+    }
+}
+
+export const SnusItem: FC<TSnusItem> = ({ snusProps }) => {
     const dispatch = useDispatch()
 
     const success = () => {

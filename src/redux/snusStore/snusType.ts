@@ -6,6 +6,6 @@ export type Snus = {
         saturation: string | null
         price: number | null
         avatar: string | null
-        _id: string | null
+        _id?: string | null
         rate: number | null
 }
