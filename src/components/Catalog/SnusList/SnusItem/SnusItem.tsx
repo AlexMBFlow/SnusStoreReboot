@@ -42,7 +42,9 @@ export const SnusItem: FC<TSnusItem> = ({ snusProps }) => {
                 />
                 <div className="snus-item__title description-center">{snusProps.name}</div>
                 <div className="snus-item__taste description-center">{snusProps.taste}</div>
-                <div className="snus-item__rate description-center"><Rate disabled defaultValue={snusProps.rate} /></div>
+                <div className="snus-item__rate description-center">
+                    <Rate disabled defaultValue={snusProps.rate} />
+                </div>
                 <div className="snus-item__info">
                     <div className="snus-item__packs description-center">
                         <span className='gray'>Пакетиков: </span>{snusProps.packs} шт</div>
