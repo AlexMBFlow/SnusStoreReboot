@@ -1,6 +1,6 @@
 import { USER_ORDER_FIRST_NAME, USER_ORDER_SECOND_NAME, USER_ORDER_PHONE,
     USER_ORDER_COUNTRY, USER_ORDER_CITY, USER_ORDER_AREA,
-    USER_ORDER_EMAIL, USER_ORDER_SOME_INFO } from "../utils/actionTypes"
+    USER_ORDER_EMAIL, USER_ORDER_SOME_INFO } from "../utils/actionTypes";
 
 type state = {
     firstName: null | string

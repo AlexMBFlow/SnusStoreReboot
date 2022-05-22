@@ -21,7 +21,7 @@ export const OrderRightItem: FC<TSnusItem> = ({ snus }) => {
         <>
             <Row gutter={[16, 16]} className="order-right-item">
                 <Col span={4}>
-                    <img className="order-avatar" src={snus.avatar} alt="" />
+                    <img className="order-avatar" src={snus.avatar} alt="avatar" />
                 </Col>
                 <Col className="order-name" span={4}>
                     <div className="order-name__wrap order-item">

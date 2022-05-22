@@ -57,7 +57,6 @@ export const OrderLeft = () => {
             })
             return
         }
-//89009518736 qwertyu@yandex.ru
         dispatch(setButtonTextAC("Отправка..."))
         sendOrder({
             basket: snusBasket,
@@ -214,7 +213,6 @@ export const OrderLeft = () => {
                     <Input value={area} onChange={areaHandler} placeholder="Гетто" />
                 </Form.Item>
 
-                {/*(emailDirty && emailError) && <div style={{ color: "red" }}>{emailError}</div>*/}
                 <Form.Item label="E-mail">
                     <Input ref={emailRef} onBlur={e => blurEmailHandler(e)} value={email} onChange={emailHandler} placeholder="example@gmail.com" />
                 </Form.Item>
