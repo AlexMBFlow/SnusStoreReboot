@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { Form, Input, Button, Row, Col, message, notification } from 'antd';
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from '../../../redux/hooks/useTypedSelector';
@@ -14,23 +14,14 @@ import {
 import "./OrderLeft.css";
 
 export const OrderLeft = () => {
-    const emailRef = useRef(null) //ссылка на инпут с e-mail'ом
-    const phoneRef = useRef(null) //ссылка на инпут с phone
-
-    const [emailDirty, setEmailDirty] = useState(false)
-    const [emailError, setEmailError] = useState(false)
-
-    const [phoneDirty, setPhoneDirty] = useState(false)
-    const [phoneError, setPhoneError] = useState(false)
-
     const dispatch = useDispatch()
-    const [ form ] = Form.useForm();
+    const [form] = Form.useForm()
     const { snusBasket } = useTypedSelector(state => state.basketReducer)
     const { isLoading, buttonText, isDisabled } = useTypedSelector(state => state.orderReducer)
     const { firstName, secondName, phone, country, city,
         area, email, someInfo } = useTypedSelector(state => state.userInfoReducer)
 
-    const buttonHandler = () => {
+    const buttonHandler: Function = () => {
         if (snusBasket.length === 0) {
             notification.info({
                 message: "Внимание!",
@@ -49,15 +40,8 @@ export const OrderLeft = () => {
             return
         }
 
-        if (emailError || phoneError) { //если есть ошибка/ошибки в полях формы
-            notification.info({
-                message: "Внимание!",
-                description: "Не все поля формы заполнены корректно",
-                placement: "bottomRight"
-            })
-            return
-        }
         dispatch(setButtonTextAC("Отправка..."))
+        dispatch(isLoadingAC(true)) //меняем состояние кнопки на isLoading т.е. true
         sendOrder({
             basket: snusBasket,
             info: {
@@ -70,54 +54,28 @@ export const OrderLeft = () => {
                 email: email,
                 someInfo: someInfo
             }
+        }).then(res => {
+            //потом когда получим ответ от сервера, диспатчим false и показываем
+            //уведомление, что заказ принят
+            if (res.status === 200) {
+                dispatch(isLoadingAC(false))
+                dispatch(stepsAC([
+                    { status: "finish", color: "#1890ff" },
+                    { status: "process", color: "#06d44b" }
+                ]))
+                dispatch(setButtonTextAC("Отправлено!🚀"))
+                dispatch(isDisabledAC(true))
+                message.success('Заказ принят!');
+            } else {
+                message.error('Не получилось отправить заказ')
+            }
         })
-        dispatch(isLoadingAC(true)) //меняем состояние кнопки на isLoading т.е. true
-        //потом когда получим ответ от сервера, диспатчим false и показываем
-        //уведомление, что заказ принят
-        setTimeout(() => {
-            dispatch(isLoadingAC(false))
-            dispatch(stepsAC([
-                { status: "finish", color: "#1890ff" },
-                { status: "process", color: "#06d44b" }
-            ]))
-            dispatch(setButtonTextAC("Отправлено!🚀"))
-            dispatch(isDisabledAC(true))
-            message.success('Заказ принят!');
-        }, 3500)
-    }
-
-    const blurEmailHandler = (e) => {
-        setEmailDirty(true)
-        const re = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
-        if (!re.test(String(e.target.value).toLocaleLowerCase())) {
-            emailRef.current.input.style.color = "red"
-            setEmailError(true)
-        }
     }
 
     const emailHandler = e => {
         dispatch(userEmailAC(e.target.value))
-        const re = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
-        if (emailDirty) {
-            if (!re.test(String(e.target.value).toLocaleLowerCase())) {
-                emailRef.current.input.style.color = "red"
-                setEmailError(true)
-            } else {
-                emailRef.current.input.style.color = "black"
-                setEmailError(false)
-            }
-        }
     }
 
-    const blurePhoneHandler = e => {
-        setPhoneDirty(true)
-        const re = /^\d[\d() -]{4,14}\d$/
-        if (!re.test(String(e.target.value).toLocaleLowerCase())) {
-            phoneRef.current.input.style.color = "red"
-            setPhoneError(true)
-        }
-    }
-    
     const firstNameHandler = e => {
         dispatch(userFirstNameAC(e.target.value))
     }
@@ -128,16 +86,6 @@ export const OrderLeft = () => {
 
     const phoneHandler = e => {
         dispatch(userPhoneAC(e.target.value))
-        const re = /^\d[\d() -]{4,14}\d$/
-        if (phoneDirty) {
-            if (!re.test(String(e.target.value).toLocaleLowerCase())) {
-                phoneRef.current.input.style.color = "red"
-                setPhoneError(true)
-            } else {
-                phoneRef.current.input.style.color = "black"
-                setPhoneError(false)
-            }
-        }
     }
 
     const countryHandler = e => {
@@ -198,7 +146,7 @@ export const OrderLeft = () => {
                 </Form.Item>
 
                 <Form.Item label="Телефон">
-                    <Input ref={phoneRef} onBlur={e => blurePhoneHandler(e)} value={phone} onChange={phoneHandler} placeholder="+7(900)-555-22-22" />
+                    <Input value={phone} onChange={phoneHandler} placeholder="+7(900)-555-22-22" />
                 </Form.Item>
 
                 <Form.Item label="Страна">
@@ -213,8 +161,20 @@ export const OrderLeft = () => {
                     <Input value={area} onChange={areaHandler} placeholder="Гетто" />
                 </Form.Item>
 
-                <Form.Item label="E-mail">
-                    <Input ref={emailRef} onBlur={e => blurEmailHandler(e)} value={email} onChange={emailHandler} placeholder="example@gmail.com" />
+                <Form.Item label="E-mail" name="email" rules={
+                    [
+                        {
+                            type: "email",
+                            message: "E-mail введен неккоректно!"
+                        },
+                        {
+                            required: true,
+                            message: "Пожалуйста, введие ваш E-mail"
+                        }
+                    ]
+                }>
+                    {/* <Input ref={emailRef} onBlur={e => blurEmailHandler(e)} value={email} onChange={emailHandler} placeholder="example@gmail.com" /> */}
+                    <Input placeholder="example@gmail.com" value={email} onChange={emailHandler} />
                 </Form.Item>
 
                 <Form.Item label="Примечания">
