@@ -4,12 +4,12 @@
 }
 
 .basket-ico {
+    position: relative;
     width: 1.7rem;
     height: 1.7rem;
 }
 
 .basket-empty {
-
     max-width: 9rem;
     margin: 1rem auto
 }

@@ -9,6 +9,7 @@ import { BasketItem } from "./BasketItem/BasketItem";
 import { useTypedSelector } from "../../../redux/hooks/useTypedSelector";
 import { getLocalStorage } from "../../../redux/utils/localStorageManager/getLocalStorage";
 import { getLocalStorageAC } from "../../../redux/actionCreators/getLocalStorageAC/getLocalStorageAC";
+import { BasketCounter } from './BasketCounter/BasketCounter';
 import "./Basket.css";
 
 export const Basket: FC = () => {
@@ -46,6 +47,7 @@ export const Basket: FC = () => {
     return (
         <div className="catalog-basket">
             <div className="basket-ico" onClick={showModal}>
+                <BasketCounter/>
                 <ShoppingCartOutlined
                     className={
                         onHover ? "basket-hover" : ""
