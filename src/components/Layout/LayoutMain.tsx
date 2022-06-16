@@ -8,6 +8,7 @@ import { Delivery } from "../Delivery/Delivery";
 import { Contacts } from "../Contacts/Contacts";
 import { FooterMain } from "../Footer/FooterMain";
 import { Order } from "../Order/Order";
+import { Chat } from "../Chat/Chat";
 import './LayoutMain.css';
 
 // [ANT DESIGN] <Menu defaultSelectedKeys={['1']}></Menu> отображение при загрузке сайта соответствующего менюИтема по key, пока убрал
@@ -46,6 +47,7 @@ export const LayoutMain: FC = () => {
                     <Route path="/contacts" element={<Contacts />} />
                     <Route path="/order" element={<Order />} />
                 </Routes>
+                <Chat/>
             </Content>
 
             <Footer>

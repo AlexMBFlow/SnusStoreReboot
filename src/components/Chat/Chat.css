@@ -1,0 +1,7 @@
+.chat-wrap {
+    position: fixed;
+    right: 1rem;
+    top: 95vh;
+    transform: scale(2.3);
+    cursor: pointer;
+}
