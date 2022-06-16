@@ -1,7 +1,11 @@
-import React from "react";
+import React, {FC} from "react";
 import "./BasketCounterNumber.css";
 
-export const BasketCounterNumber = (props) => {
+interface ICounter {
+    counter: number
+}
+
+export const BasketCounterNumber: FC<ICounter> = (props: ICounter): React.ReactElement<HTMLDivElement> => {
     return (
         <>
             <div className="basket-counter-wrap">

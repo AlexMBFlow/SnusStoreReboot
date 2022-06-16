@@ -22,7 +22,7 @@ export const Basket: FC = () => {
     const { isModalVisible } = useTypedSelector(state => state.showBasket)
     const { snusBasket } = useTypedSelector(state => state.basketReducer)
     const { totalPrice } = useTypedSelector(state => state.basketReducer)
-    const [onHover, setOnHover] = useState(false)
+    const [onHover, setOnHover] = useState<boolean>(false)
 
     const handleOnMouseEnter = () => {
         setOnHover(true)

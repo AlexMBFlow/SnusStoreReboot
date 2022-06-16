@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import { Divider } from "antd";
 import { AutoComplete } from 'antd';
 import { v4 as uuidv4 } from 'uuid';
@@ -9,7 +9,7 @@ import './SearchSnus.css';
 
 const options = [];
 
-export const SearchSnus = () => {
+export const SearchSnus: FC = () => {
     const {value} = useTypedSelector(state => state.inputReducer)
     const {snusItems} = useTypedSelector(state => state.snusReducer)
 
