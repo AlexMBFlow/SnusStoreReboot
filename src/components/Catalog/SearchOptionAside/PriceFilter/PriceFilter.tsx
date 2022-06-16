@@ -1,7 +1,5 @@
 import React, { FC } from 'react';
-import { Select } from 'antd';
-import { Slider } from 'antd';
-import { Divider } from 'antd';
+import { Select, Slider, Divider } from 'antd';
 import { useDispatch } from 'react-redux';
 import { priceSliderAC } from "../../../../redux/actionCreators/priceSliderAC/priceSliderAC";
 import { setSortPriceAC } from "../../../../redux/actionCreators/setSortPriceAC/setSortPriceAC";

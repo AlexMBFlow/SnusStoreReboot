@@ -1,28 +1,42 @@
-import React, { FC } from 'react';
+import React, { FC, useRef } from 'react';
 import { Button, message, Rate } from 'antd';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { basketAddAC } from "../../../../redux/actionCreators/basketAC/basketAC";
+/* import { gsap } from "gsap"; */
+//import { CSSPlugin } from 'gsap/CSSPlugin'
 import './SnusItem.css';
 
 type TSnusItem = {
     snusProps: {
-    name: string
-    taste: string
-    packs: number
-    nicotine: number
-    saturation: string
-    price: number
-    avatar: string
-    rate: number
-    _id: any
+        name: string
+        taste: string
+        packs: number
+        nicotine: number
+        saturation: string
+        price: number
+        avatar: string
+        rate: number
+        _id: any
     }
 }
 
 export const SnusItem: FC<TSnusItem> = ({ snusProps }) => {
+    //gsap.registerPlugin(CSSPlugin)
     const dispatch = useDispatch()
+    const buttonRef = useRef<HTMLDivElement | null>(null!)
+    /*     useEffect(() => {
+            gsap.to(gsap.utils.selector(".el"), {
+                rotation: '+=360'
+            })
+            console.log(buttonRef.current)
+        }) */
+    /* useEffect(() => {
+        
+    }) */
 
     const success = () => {
+        /* gsap.fromTo(buttonRef.current, { backgroundColor: "#262626" }, { backgroundColor: "#E209DB", duration: 0.3 }) */
         //чтобы у итемов, которые лежат в корзине, были разные id, иначе
         //если добавить 2 одинаковых корвуса, и нажать удалить один,
         //удалятся все корвусы, потому что у них одинавые id, ведь проверка идет по id
@@ -55,7 +69,7 @@ export const SnusItem: FC<TSnusItem> = ({ snusProps }) => {
                 <div className="snus-item__price">{snusProps.price} ₽</div>
                 <div className="snus-item__buy">
                     <div className="snus-item__buy-inner">
-                        <Button onClick={success} type="default" shape='round'>
+                        <Button ref={buttonRef} onClick={success} type="default" shape='round'>
                             Купить
                         </Button>
                     </div>
