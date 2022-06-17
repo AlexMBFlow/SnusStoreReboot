@@ -1,10 +1,10 @@
-import React, { useState, MouseEvent } from "react";
+import React, { useState, MouseEvent, FC } from "react";
 import { WechatOutlined } from '@ant-design/icons';
 import { ChatContent } from "./ChatContent/ChatContent";
 import "./Chat.css";
 
 
-export const Chat = () => {
+export const Chat: FC = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false)
     const clickHandler = (e: MouseEvent): void => {
         setIsOpen(isOpen => !isOpen)
