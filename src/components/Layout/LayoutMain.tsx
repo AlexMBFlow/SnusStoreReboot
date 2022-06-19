@@ -18,7 +18,6 @@ export const LayoutMain: FC = () => {
     const location = useNavigate()
     useEffect(() => {
         window.scrollTo(0, 0);
-        console.log(123123)
     }, [location])
     return (
         <Layout>
