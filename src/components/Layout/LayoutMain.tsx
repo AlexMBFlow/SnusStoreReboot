@@ -1,6 +1,6 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { Layout, Menu } from 'antd';
-import { Route, Routes, Link } from 'react-router-dom';
+import { Route, Routes, Link, useNavigate } from 'react-router-dom';
 import { Welcome } from "../Welcume/Welcome";
 import { Home } from "../Home/Home";
 import { Catalog } from "../Catalog/Catalog";
@@ -15,6 +15,11 @@ import './LayoutMain.css';
 
 export const LayoutMain: FC = () => {
     const { Header, Content, Footer } = Layout;
+    const location = useNavigate()
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        console.log(123123)
+    }, [location])
     return (
         <Layout>
             <Header className="ant-header" style={{ position: 'fixed', zIndex: 1, width: '100%', padding: 0 }}>
@@ -42,12 +47,12 @@ export const LayoutMain: FC = () => {
                 <Routes>
                     <Route path="/" element={<Welcome />} />
                     <Route path="/home" element={<Home />} />
-                    <Route path="/catalog" element={<Catalog />}/>
+                    <Route path="/catalog" element={<Catalog />} />
                     <Route path="/delivery" element={<Delivery />} />
                     <Route path="/contacts" element={<Contacts />} />
                     <Route path="/order" element={<Order />} />
                 </Routes>
-                <Chat/>
+                <Chat />
             </Content>
 
             <Footer>
