@@ -1,41 +1,205 @@
-import React, { FC } from "react";
-import { Row, Col, Steps } from 'antd';
-import { OrderLeft } from './OrderLeft/OrderLeft';
-import { OrderRight } from './OrderRight/OrderRight';
-import { SolutionOutlined, UserOutlined, SmileOutlined, CreditCardTwoTone } from '@ant-design/icons';
+import React from "react";
+import { Form, Input, Button, Row, Col, message, notification } from 'antd';
+import { useDispatch } from "react-redux";
 import { useTypedSelector } from '../../redux/hooks/useTypedSelector';
+import { isLoadingAC } from "../../redux/actionCreators/orderAC/orderAC";
+import { isDisabledAC } from "../../redux/actionCreators/orderAC/orderAC";
+import { setButtonTextAC } from "../../redux/actionCreators/orderAC/orderAC";
+import { sendOrder } from "../../api/sendOrder";
+import {
+    userFirstNameAC, userSecondNameAC, userPhoneAC, userCountryAC,
+    userCityAC, userAreaAC, userEmailAC, userSomeInfoAC
+} from "../../redux/actionCreators/userInfoAC/userInfoAC";
 import "./Order.css";
 
-export const Order: FC = () => {
-    const { Step } = Steps;
-    const { step } = useTypedSelector(state => state.stepReducer)
+export const Order = () => {
+    const dispatch = useDispatch()
+    const [form] = Form.useForm()
+    const { snusBasket } = useTypedSelector(state => state.basketReducer)
+    const { isLoading, buttonText, isDisabled } = useTypedSelector(state => state.orderReducer)
+    const { firstName, secondName, phone, country, city,
+        area, email, someInfo } = useTypedSelector(state => state.userInfoReducer)
 
-    const [ pay, feedBack ] = step
-    //#1890ff синий
-    //#bfbfbf серый !!!
-    //#06d44b green
-    //Не понятно, почему последний Step не красится в зеленый, не зависит от статуса, ведь у pay сначала process и он зеленый,
-    //а потом этот же статус меняется на finish и все работает. у последнего даже при wait ничего не менялось, тестил в начале, странная ситуация
+    //Валидация емейла
+    let emailRegex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
+
+
+    const submitHandler: Function = () => {
+        //Проверка наличие хотя бы 1 товара в корзине
+        if (snusBasket.length === 0) {
+            notification.info({
+                message: "Внимание!",
+                description: "Ваша корзина пуста, пожалуйста, заполните её",
+                placement: "bottomRight"
+            })
+            return
+        }
+        // Проверка заполненности всех нужных полей
+        if (!firstName || !secondName || !phone || !country || !city || !area || !email) {
+            console.log(firstName)
+            notification.info({
+                message: "Внимание!",
+                description: "Не все поля формы заполнены корректно",
+                placement: "bottomRight"
+            })
+            return
+        }
+        // Проверка поля e-mail
+        if (!emailRegex.test(email)) {
+            notification.info({
+                message: "Внимание!",
+                description: "Неверно указан E-mail",
+                placement: "bottomRight"
+            })
+            return
+        }
+        if (isNaN(+phone)) {
+            notification.info({
+                message: "Внимание!",
+                description: "Неверно указан номер телефона",
+                placement: "bottomRight"
+            })
+            return
+        }
+
+        dispatch(setButtonTextAC("Отправка..."))
+        dispatch(isLoadingAC(true)) //меняем состояние кнопки на isLoading т.е. true
+        sendOrder({
+            basket: snusBasket,
+            info: {
+                firstName: firstName,
+                secondName: secondName,
+                phone: phone,
+                country: country,
+                city: city,
+                area: area,
+                email: email,
+                someInfo: someInfo
+            }
+        }).then(res => {
+            //потом когда получим ответ от сервера, диспатчим false и показываем
+            //уведомление, что заказ принят
+            dispatch(isLoadingAC(false))
+            dispatch(setButtonTextAC("Отправлено!🚀"))
+            dispatch(isDisabledAC(true))
+            message.success('Заказ принят!');
+        }).catch(err => {
+            message.error('Не удалось отправить заказ')
+        })
+    }
+
+    const emailHandler = e => {
+        dispatch(userEmailAC(e.target.value))
+    }
+
+    const firstNameHandler = e => {
+        dispatch(userFirstNameAC(e.target.value))
+    }
+
+    const secondNameHandler = e => {
+        dispatch(userSecondNameAC(e.target.value))
+    }
+
+    const phoneHandler = e => {
+        dispatch(userPhoneAC(e.target.value))
+    }
+
+    const countryHandler = e => {
+        dispatch(userCountryAC(e.target.value))
+    }
+
+    const cityHandler = e => {
+        dispatch(userCityAC(e.target.value))
+    }
+
+    const areaHandler = e => {
+        dispatch(userAreaAC(e.target.value))
+    }
+
+    const someInfoHandler = e => {
+        dispatch(userSomeInfoAC(e.target.value))
+    }
+
+    const formItemLayout = {
+        labelCol: {
+            span: 7,
+        },
+        wrapperCol: {
+            span: 14,
+        },
+    };
+    const buttonItemLayout = {
+        wrapperCol: {
+            span: 6,
+            offset: 7,
+        },
+    };
+
     return (
-        <div className="order-page">
-            <Row>
+        <div className="order-form">
+            <Row className="order-form-title">
                 <Col span={24}>
-                    <Steps>
-                        <Step status={"finish"} title="Перейти в каталог" icon={<UserOutlined />} />
-                        <Step status={"finish"} title="Выбрать снюс" icon={<SolutionOutlined />} />
-                        <Step status={pay.status} title="Оплатить" icon={<CreditCardTwoTone twoToneColor={pay.color}/>} />
-                        <Step status={feedBack.status} title="Написать отзыв!" icon={<SmileOutlined style={{color: feedBack.color}} twoToneColor={feedBack.color}/>} />
-                    </Steps>
+                    Пожалуйста, заполните данные формы
                 </Col>
             </Row>
-            <Row>
-                <Col span={8}>
-                    <OrderLeft />
-                </Col>
-                <Col span={16}>
-                    <OrderRight />
-                </Col>
-            </Row>
+            <Form
+                {...formItemLayout}
+                layout={'horizontal'}
+                form={form}
+                initialValues={{
+                    layout: "horizontal",
+                }}
+
+            >
+                <Form.Item label="Имя" >
+                    <Input value={firstName} onChange={firstNameHandler} placeholder="Богдан" />
+                </Form.Item>
+
+                <Form.Item label="Фамилия">
+                    <Input value={secondName} onChange={secondNameHandler} placeholder="Заглотнюк" />
+                </Form.Item>
+
+                <Form.Item label="Телефон">
+                    <Input value={phone} onChange={phoneHandler} placeholder="+7(900)-555-22-22" />
+                </Form.Item>
+
+                <Form.Item label="Страна">
+                    <Input value={country} onChange={countryHandler} placeholder="Нигерия" />
+                </Form.Item>
+
+                <Form.Item label="Город / Область">
+                    <Input value={city} onChange={cityHandler} placeholder="Абаджи" />
+                </Form.Item>
+
+                <Form.Item label="Район">
+                    <Input value={area} onChange={areaHandler} placeholder="Гетто" />
+                </Form.Item>
+
+                <Form.Item label="E-mail" name="email" rules={
+                    [
+                        {
+                            type: "email",
+                            message: "E-mail введен неккоректно!"
+                        },
+                        {
+                            required: true,
+                            message: "Пожалуйста, введие ваш E-mail"
+                        }
+                    ]
+                }>
+                    <Input placeholder="example@gmail.com" value={email} onChange={emailHandler} />
+                </Form.Item>
+
+                <Form.Item label="Примечания">
+                    <Input value={someInfo} onChange={someInfoHandler} placeholder="Чем быстрее, тем лучше" />
+                </Form.Item>
+
+                <Form.Item {...buttonItemLayout}>
+                    <Button disabled={isDisabled} type="primary" loading={isLoading} onClick={() => submitHandler()}>
+                        {buttonText}
+                    </Button>
+                </Form.Item>
+            </Form>
         </div>
-    );
+    )
 }

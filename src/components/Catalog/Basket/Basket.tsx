@@ -1,28 +1,41 @@
 import React, { useState, useEffect, FC } from 'react';
-import { useNavigate } from "react-router-dom";
-import { Modal } from 'antd';
+import { Drawer, Button } from 'antd';
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { showBasketAC } from "../../../redux/actionCreators/showBasketAC/showBasketAC";
+import { showOrderAC } from "../../../redux/actionCreators/showOrderAC/showOrderAC"
 import { BasketItem } from "./BasketItem/BasketItem";
 import { useTypedSelector } from "../../../redux/hooks/useTypedSelector";
-import { getLocalStorage } from "../../../redux/utils/localStorageManager/getLocalStorage";
-import { getLocalStorageAC } from "../../../redux/actionCreators/getLocalStorageAC/getLocalStorageAC";
+/* import { getLocalStorage } from "../../../redux/utils/localStorageManager/getLocalStorage";
+import { getLocalStorageAC } from "../../../redux/actionCreators/getLocalStorageAC/getLocalStorageAC"; */
 import { BasketCounter } from './BasketCounter/BasketCounter';
+import { Order } from '../../Order/Order';
 import "./Basket.css";
 
 export const Basket: FC = () => {
-    const dispatch = useDispatch()
-/*     useEffect( () => {
-        const storage = getLocalStorage()
-        dispatch(getLocalStorageAC(storage))
-    }) */
-    let navigate = useNavigate()
-    const { isModalVisible } = useTypedSelector(state => state.showBasket)
+    const [onHover, setOnHover] = useState<boolean>(false)
+
+    const { isBasketVisible, isOrderVisible } = useTypedSelector(state => state.showBasket)
     const { snusBasket } = useTypedSelector(state => state.basketReducer)
     const { totalPrice } = useTypedSelector(state => state.basketReducer)
-    const [onHover, setOnHover] = useState<boolean>(false)
+
+    const dispatch = useDispatch()
+    const showBasket = () => {
+        dispatch(showBasketAC(true))
+    };
+
+    const onClose = () => {
+        dispatch(showBasketAC(false))
+    };
+
+    const showChildrenDrawer = () => {
+        dispatch(showOrderAC(true))
+    };
+
+    const onChildrenDrawerClose = () => {
+        dispatch(showOrderAC(false))
+    };
 
     const handleOnMouseEnter = () => {
         setOnHover(true)
@@ -32,22 +45,10 @@ export const Basket: FC = () => {
         setOnHover(false)
     }
 
-    const showModal = () => {
-        dispatch(showBasketAC(true));
-    };
-
-    const handleOk = () => {
-        dispatch(showBasketAC(false));
-        navigate("../order");
-    };
-
-    const handleCancel = () => {
-        dispatch(showBasketAC(false));
-    };
     return (
         <div className="catalog-basket">
-            <div className="basket-ico" onClick={showModal}>
-                <BasketCounter/>
+            <div className="basket-ico" onClick={showBasket}>
+                <BasketCounter />
                 <ShoppingCartOutlined
                     className={
                         onHover ? "basket-hover" : ""
@@ -60,8 +61,13 @@ export const Basket: FC = () => {
                 />
             </div>
 
-            <Modal okText={"Оформить заказ"} cancelText="Закрыть корзину" title="Корзина" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-
+            <Drawer
+                title="Корзина"
+                width={450}
+                closable={false}
+                onClose={onClose}
+                visible={isBasketVisible}
+            >
                 {snusBasket.length === 0 ? ""
                     :
                     <div className="basket-item-info">
@@ -70,8 +76,8 @@ export const Basket: FC = () => {
                         <div className="basket-item-taste-info">Вкус:</div>
                         <div className="basket-item-price-info">Цена:</div>
                     </div>
-
                 }
+
                 {snusBasket.length === 0 ?
                     <div className="basket-empty">Корзина пуста &#128546;</div>
                     :
@@ -79,17 +85,37 @@ export const Basket: FC = () => {
                         <BasketItem snusBasket={snusBasket} key={uuidv4()} />
                     ))
                 }
+
                 {snusBasket.length === 0 ?
                     ""
                     :
                     <div className="basket-total-price">
-                        <div className="basket-total-price-inner">
-                            {totalPrice} ₽
+                        <div className="basket-total-price-wrap">
+                            <div className="basket-total-price-text-wrap">
+                                <div className="basket-total-price-text-inner">Итого:</div>
+                            </div>
+                            <div className="basket-total-price-number-wrap">
+                                <div className="basket-total-price-number-inner"> {totalPrice} ₽</div>
+                            </div>
                         </div>
-                        <div className="basket-total-price-number">Итого:
+                        <div className="basket-total-price-submit">
+                            <Button type="primary" onClick={showChildrenDrawer}>
+                                Оформить заказ
+                            </Button>
                         </div>
+
                     </div>}
-            </Modal>
+
+                <Drawer
+                    title="Оформление заказа"
+                    width={440}
+                    closable={false}
+                    onClose={onChildrenDrawerClose}
+                    visible={isOrderVisible}
+                >
+                    <Order />
+                </Drawer>
+            </Drawer>
         </div>
     )
 }

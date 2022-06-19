@@ -48,15 +48,30 @@
     margin-top: 2rem;
     display: flex;
     flex-flow: row-reverse nowrap;
+    justify-content: space-between;
     font-size: 0.9rem;
     font-weight: bolder;
 }
 
-.basket-total-price-inner {
-    text-align: center;
+.basket-total-price-number-wrap {
+    display: flex;
+    align-items: center;
     min-width: 4.5rem;
 }
 
-.basket-total-price-number {
+.basket-total-price-text {
     text-align: center;
+}
+
+.basket-total-price-wrap {
+    display: flex;
+}
+
+.basket-total-price-text-wrap {
+    display: flex;
+    align-items: center;
+}
+
+.basket-total-price-text-inner {
+    padding-right: 0.5rem;
 }

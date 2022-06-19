@@ -9,7 +9,6 @@ import { showBasket } from "../redux/reducers/showBasket";
 import { basketReducer } from "../redux/reducers/basketReducer";
 import { orderReducer } from './reducers/orderReducer';
 import { userInfoReducer } from './reducers/userInfoReducer';
-import { stepReducer } from './reducers/stepReducer';
 import { loadingReducer } from './reducers/loadingReducer';
 
 
@@ -26,7 +25,6 @@ const rootReduser = combineReducers({
     basketReducer,
     orderReducer,
     userInfoReducer,
-    stepReducer,
     loadingReducer
 })
 

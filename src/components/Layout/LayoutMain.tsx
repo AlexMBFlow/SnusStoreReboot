@@ -7,7 +7,6 @@ import { Catalog } from "../Catalog/Catalog";
 import { Delivery } from "../Delivery/Delivery";
 import { Contacts } from "../Contacts/Contacts";
 import { FooterMain } from "../Footer/FooterMain";
-import { Order } from "../Order/Order";
 import { Chat } from "../Chat/Chat";
 import './LayoutMain.css';
 
@@ -49,7 +48,6 @@ export const LayoutMain: FC = () => {
                     <Route path="/catalog" element={<Catalog />} />
                     <Route path="/delivery" element={<Delivery />} />
                     <Route path="/contacts" element={<Contacts />} />
-                    <Route path="/order" element={<Order />} />
                 </Routes>
                 <Chat />
             </Content>

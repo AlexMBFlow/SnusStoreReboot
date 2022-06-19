@@ -1,22 +1,27 @@
-import { SET_SHOW_BASKET } from "../utils/actionTypes";
+import { SET_SHOW_BASKET, SET_SHOW_ORDER } from "../utils/actionTypes";
 
 type defaultState = {
-    isModalVisible: boolean
+    isBasketVisible: boolean
+    isOrderVisible: boolean
 }
 
 type basketAction = {
     type: string
-    isModalVisible?: boolean
+    isBasketVisible?: boolean
+    isOrderVisible?: boolean
 }
 
 const initialState: defaultState = {
-    isModalVisible: false
+    isBasketVisible: false,
+    isOrderVisible: false
 }
 
 export const showBasket = (state = initialState, action: basketAction) => {
     switch (action.type) {
         case SET_SHOW_BASKET:
-            return {...state, isModalVisible: action.isModalVisible}
+            return {...state, isBasketVisible: action.isBasketVisible}
+        case SET_SHOW_ORDER:
+        return {...state, isOrderVisible: action.isOrderVisible}
         default:
             return state
     }
