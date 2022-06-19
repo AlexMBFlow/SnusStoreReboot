@@ -21,7 +21,12 @@ export const OrderLeft = () => {
     const { firstName, secondName, phone, country, city,
         area, email, someInfo } = useTypedSelector(state => state.userInfoReducer)
 
-    const buttonHandler: Function = () => {
+    //Валидация емейла
+    let emailRegex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
+
+
+    const submitHandler: Function = () => {
+        //Проверка наличие хотя бы 1 товара в корзине
         if (snusBasket.length === 0) {
             notification.info({
                 message: "Внимание!",
@@ -30,11 +35,29 @@ export const OrderLeft = () => {
             })
             return
         }
-
-        if (!firstName && !secondName && !phone && !country && !city && !area && !email) {
+        // Проверка заполненности всех нужных полей
+        if (!firstName || !secondName || !phone || !country || !city || !area || !email) {
+            console.log(firstName)
             notification.info({
                 message: "Внимание!",
                 description: "Не все поля формы заполнены корректно",
+                placement: "bottomRight"
+            })
+            return
+        }
+        // Проверка поля e-mail
+        if (!emailRegex.test(email)) {
+            notification.info({
+                message: "Внимание!",
+                description: "Неверно указан E-mail",
+                placement: "bottomRight"
+            })
+            return
+        }
+        if (isNaN(+phone)) {
+            notification.info({
+                message: "Внимание!",
+                description: "Неверно указан номер телефона",
                 placement: "bottomRight"
             })
             return
@@ -57,18 +80,16 @@ export const OrderLeft = () => {
         }).then(res => {
             //потом когда получим ответ от сервера, диспатчим false и показываем
             //уведомление, что заказ принят
-            if (res.status === 200) {
-                dispatch(isLoadingAC(false))
-                dispatch(stepsAC([
-                    { status: "finish", color: "#1890ff" },
-                    { status: "process", color: "#06d44b" }
-                ]))
-                dispatch(setButtonTextAC("Отправлено!🚀"))
-                dispatch(isDisabledAC(true))
-                message.success('Заказ принят!');
-            } else {
-                message.error('Не получилось отправить заказ')
-            }
+            dispatch(isLoadingAC(false))
+            dispatch(stepsAC([
+                { status: "finish", color: "#1890ff" },
+                { status: "process", color: "#06d44b" }
+            ]))
+            dispatch(setButtonTextAC("Отправлено!🚀"))
+            dispatch(isDisabledAC(true))
+            message.success('Заказ принят!');
+        }).catch(err => {
+            message.error('Не удалось отправить заказ')
         })
     }
 
@@ -137,7 +158,12 @@ export const OrderLeft = () => {
                 }}
 
             >
-                <Form.Item label="Имя" >
+                <Form.Item label="Имя" rules={
+                    [{
+                        required: true,
+                        message: "Пожалуйста, введие ваш имя"
+                    }]
+                }>
                     <Input value={firstName} onChange={firstNameHandler} placeholder="Богдан" />
                 </Form.Item>
 
@@ -182,7 +208,7 @@ export const OrderLeft = () => {
                 </Form.Item>
 
                 <Form.Item {...buttonItemLayout}>
-                    <Button disabled={isDisabled} type="primary" loading={isLoading} onClick={() => buttonHandler()}>
+                    <Button disabled={isDisabled} type="primary" loading={isLoading} onClick={() => submitHandler()}>
                         {buttonText}
                     </Button>
                 </Form.Item>
