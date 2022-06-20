@@ -36,10 +36,9 @@ interface AxiosResponse<T = any>  {
     request?: any;
 }
 
-//axios.defaults.baseURL = "http://localhost:5000"
-
-export const sendOrder = async (obj: TSendOrder): Promise<any> => {
-    return await axios.post<TSendOrder, AxiosResponse<string>>("http://localhost:5000/api/order", JSON.stringify(
+axios.defaults.baseURL = "http://localhost:5000"
+export const sendOrder = async (obj: TSendOrder): Promise<AxiosResponse<string>> => {
+    return await axios.post<TSendOrder, AxiosResponse<string>>("api/order", JSON.stringify(
         {
             method: "POST",
             data: JSON.stringify(obj),
