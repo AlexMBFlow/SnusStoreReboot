@@ -4,9 +4,13 @@ import { ChatContent } from "./ChatContent/ChatContent";
 import "./Chat.css";
 
 let flag = false
+interface IIcoActive {
+    color: string
+}
+
 export const Chat: FC = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false)
-    const [isIcoActive, setIsIcoActive] = useState({color: "black"})    
+    const [isIcoActive, setIsIcoActive] = useState<IIcoActive>({color: "black"})    
 
     const clickHandler = (e: MouseEvent): void => {
         setIsOpen(isOpen => !isOpen)
