@@ -3,7 +3,8 @@ import { WechatOutlined } from '@ant-design/icons';
 import { ChatContent } from "./ChatContent/ChatContent";
 import "./Chat.css";
 
-let flag = false
+let flag: boolean = false
+
 interface IIcoActive {
     color: string
 }
