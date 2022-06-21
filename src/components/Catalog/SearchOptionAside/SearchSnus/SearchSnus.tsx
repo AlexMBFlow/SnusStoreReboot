@@ -2,20 +2,20 @@ import React, {FC} from 'react';
 import { Divider } from "antd";
 import { AutoComplete } from 'antd';
 import { v4 as uuidv4 } from 'uuid';
-import { useDispatch } from 'react-redux';
-import { inputAC } from "../../../../redux/actionCreators/inputAC/inputAC";
 import { useTypedSelector } from "../../../../redux/hooks/useTypedSelector";
+import { useActions } from '../../../../redux/hooks/useActions';
 import './SearchSnus.css';
 
 const options = [];
 
 export const SearchSnus: FC = () => {
+    const {inputAC} = useActions()
     const {value} = useTypedSelector(state => state.inputReducer)
     const {snusItems} = useTypedSelector(state => state.snusReducer)
 
-    const dispatch = useDispatch()
+    //const dispatch = useDispatch<AppDispatch>()
     const handleChange = (e) => {
-        dispatch(inputAC(e))
+        inputAC(e)
     }
     //заполняем строку автокомплита нужными названиями снюсов
     let snusItemName = [];

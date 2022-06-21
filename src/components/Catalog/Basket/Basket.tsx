@@ -1,10 +1,7 @@
 import React, { useState, useEffect, FC } from 'react';
 import { Drawer, Button } from 'antd';
 import { ShoppingCartOutlined } from '@ant-design/icons';
-import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-//import { showBasketAC } from "../../../redux/actionCreators/showBasketAC/showBasketAC";
-import { showOrderAC } from "../../../redux/actionCreators/showOrderAC/showOrderAC"
 import { BasketItem } from "./BasketItem/BasketItem";
 import { useTypedSelector } from "../../../redux/hooks/useTypedSelector";
 /* import { getLocalStorage } from "../../../redux/utils/localStorageManager/getLocalStorage";
@@ -15,14 +12,13 @@ import { useActions} from '../../../redux/hooks/useActions';
 import "./Basket.css";
 
 export const Basket: FC = () => {
+    const { showBasketAC, showOrderAC } = useActions()
     const [onHover, setOnHover] = useState<boolean>(false)
-    const { showBasketAC } = useActions()
 
     const { isBasketVisible, isOrderVisible } = useTypedSelector(state => state.showBasket)
     const { snusBasket } = useTypedSelector(state => state.basketReducer)
     const { totalPrice } = useTypedSelector(state => state.basketReducer)
 
-    const dispatch = useDispatch()
     const showBasket = () => {
         showBasketAC(true)
     };
@@ -32,11 +28,11 @@ export const Basket: FC = () => {
     };
 
     const showChildrenDrawer = () => {
-        dispatch(showOrderAC(true))
+        showOrderAC(true)
     };
 
     const onChildrenDrawerClose = () => {
-        dispatch(showOrderAC(false))
+        showOrderAC(false)
     };
 
     const handleOnMouseEnter = () => {

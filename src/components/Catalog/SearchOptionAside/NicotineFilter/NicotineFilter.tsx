@@ -2,35 +2,33 @@ import React, { FC } from 'react';
 import { Checkbox, Divider } from "antd";
 import { Tooltip } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
-import { useDispatch } from 'react-redux';
-import { checkedListAC } from "../../../../redux/actionCreators/checkedListAC/checkedListAC";
-import { setIndeterminateAC } from "../../../../redux/actionCreators/setIndeterminateAC/setIndeterminateAC";
-import { setCheckAllAC } from "../../../../redux/actionCreators/setCheckAllAC/setCheckAllAC";
 import { useTypedSelector } from "../../../../redux/hooks/useTypedSelector";
+import { useActions } from '../../../../redux/hooks/useActions';
 import './NicotineFilter.css';
 
 
 const CheckboxGroup = Checkbox.Group;
 
 export const NicotineFilter: FC = () => {
-    const dispatch = useDispatch()
+    const { checkedListAC, setIndeterminateAC, setCheckAllAC } = useActions()
     const tooltipText = '0-20мг легкий, 20-40мг средний, 40-60мг крепкий, 60+мг очень крепкий';
 
-    const {defaultCheckedList} = useTypedSelector(state => state.nicotineReducer)
-    const {plainOptions} = useTypedSelector(state => state.nicotineReducer)
-    const {indeterminate} = useTypedSelector(state => state.nicotineReducer)
-    const {checkAll} = useTypedSelector(state => state.nicotineReducer)
+    const { defaultCheckedList } = useTypedSelector(state => state.nicotineReducer)
+    const { plainOptions } = useTypedSelector(state => state.nicotineReducer)
+    const { indeterminate } = useTypedSelector(state => state.nicotineReducer)
+    const { checkAll } = useTypedSelector(state => state.nicotineReducer)
 
     const onChange = (list) => {
-        dispatch(checkedListAC(list))
-        dispatch(setIndeterminateAC(!!list.length && list.length < plainOptions.length))
-        dispatch(setCheckAllAC(list.length === plainOptions.length))
+        checkedListAC(list)
+        setIndeterminateAC(!!list.length && list.length < plainOptions.length)
+        setCheckAllAC(list.length === plainOptions.length)
     };
 
     const onCheckAllChange = (e) => {
-        dispatch(checkedListAC(e.target.checked ? plainOptions : []))
-        dispatch(setIndeterminateAC(false));
-        dispatch(setCheckAllAC(e.target.checked))
+        checkedListAC(e.target.checked ? plainOptions : [])
+        checkedListAC(e.target.checked ? plainOptions : [])
+        setIndeterminateAC(false)
+        setCheckAllAC(e.target.checked)
     };
 
     return (

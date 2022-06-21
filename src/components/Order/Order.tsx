@@ -1,19 +1,15 @@
 import React from "react";
 import { Form, Input, Button, Row, Col, message, notification } from 'antd';
-import { useDispatch } from "react-redux";
 import { useTypedSelector } from '../../redux/hooks/useTypedSelector';
-import { isLoadingAC } from "../../redux/actionCreators/orderAC/orderAC";
-import { isDisabledAC } from "../../redux/actionCreators/orderAC/orderAC";
-import { setButtonTextAC } from "../../redux/actionCreators/orderAC/orderAC";
 import { sendOrder } from "../../api/sendOrder";
-import {
-    userFirstNameAC, userSecondNameAC, userPhoneAC, userCountryAC,
-    userCityAC, userAreaAC, userEmailAC, userSomeInfoAC
-} from "../../redux/actionCreators/userInfoAC/userInfoAC";
+import { useActions } from '../../redux/hooks/useActions';
 import "./Order.css";
 
 export const Order = () => {
-    const dispatch = useDispatch()
+    const {isLoadingAC, setButtonTextAC,
+        isDisabledAC, userEmailAC, userFirstNameAC, userSecondNameAC,
+        userPhoneAC, userCountryAC, userCityAC, userAreaAC, userSomeInfoAC} = useActions()
+    //const dispatch = useDispatch<AppDispatch>()
     const [form] = Form.useForm()
     const { snusBasket } = useTypedSelector(state => state.basketReducer)
     const { isLoading, buttonText, isDisabled } = useTypedSelector(state => state.orderReducer)
@@ -62,8 +58,8 @@ export const Order = () => {
             return
         }
 
-        dispatch(setButtonTextAC("Отправка..."))
-        dispatch(isLoadingAC(true)) //меняем состояние кнопки на isLoading т.е. true
+        setButtonTextAC("Отправка...")
+        isLoadingAC(true) //меняем состояние кнопки на isLoading т.е. true
         sendOrder({
             basket: snusBasket,
             info: {
@@ -79,9 +75,9 @@ export const Order = () => {
         }).then(res => {
             //потом когда получим ответ от сервера, диспатчим false и показываем
             //уведомление, что заказ принят
-            dispatch(isLoadingAC(false))
-            dispatch(setButtonTextAC("Отправлено!🚀"))
-            dispatch(isDisabledAC(true))
+            isLoadingAC(false)
+            setButtonTextAC("Отправлено!🚀")
+            isDisabledAC(true)
             message.success('Заказ принят!');
         }).catch(err => {
             message.error('Не удалось отправить заказ')
@@ -89,35 +85,35 @@ export const Order = () => {
     }
 
     const emailHandler = e => {
-        dispatch(userEmailAC(e.target.value))
+        userEmailAC(e.target.value)
     }
 
     const firstNameHandler = e => {
-        dispatch(userFirstNameAC(e.target.value))
+        userFirstNameAC(e.target.value)
     }
 
     const secondNameHandler = e => {
-        dispatch(userSecondNameAC(e.target.value))
+        userSecondNameAC(e.target.value)
     }
 
     const phoneHandler = e => {
-        dispatch(userPhoneAC(e.target.value))
+        userPhoneAC(e.target.value)
     }
 
     const countryHandler = e => {
-        dispatch(userCountryAC(e.target.value))
+        userCountryAC(e.target.value)
     }
 
     const cityHandler = e => {
-        dispatch(userCityAC(e.target.value))
+        userCityAC(e.target.value)
     }
 
     const areaHandler = e => {
-        dispatch(userAreaAC(e.target.value))
+        userAreaAC(e.target.value)
     }
 
     const someInfoHandler = e => {
-        dispatch(userSomeInfoAC(e.target.value))
+        userSomeInfoAC(e.target.value)
     }
 
     const formItemLayout = {

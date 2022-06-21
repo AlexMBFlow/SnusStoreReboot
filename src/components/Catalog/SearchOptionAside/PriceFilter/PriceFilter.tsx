@@ -1,21 +1,17 @@
 import React, { FC } from 'react';
 import { Select, Slider, Divider } from 'antd';
-import { useDispatch } from 'react-redux';
-import { priceSliderAC } from "../../../../redux/actionCreators/priceSliderAC/priceSliderAC";
-import { setSortPriceAC } from "../../../../redux/actionCreators/setSortPriceAC/setSortPriceAC";
 import { useTypedSelector } from "../../../../redux/hooks/useTypedSelector";
+import { useActions } from '../../../../redux/hooks/useActions';
 import './PriceFilter.css';
 
 export const PriceFilter: FC = () => {
-    const dispatch = useDispatch()
-
+    const { setSortPriceAC, priceSliderAC} = useActions()
     const {defaultPrice} = useTypedSelector(state => state.priceReducer)
     const {min} = useTypedSelector(state => state.priceReducer)
     const {max} = useTypedSelector(state => state.priceReducer)
-    //const {sort} = useSelector(state => state.priceReducer) priceReducer-->state.sort
 
     const handleChangeSelect = sort => {
-        dispatch(setSortPriceAC(sort))
+        setSortPriceAC(sort)
     }
 
     const handleChangeSliderDebounce = (callback, ms) => {
@@ -30,7 +26,7 @@ export const PriceFilter: FC = () => {
     }
 
     let handleChangeSlider = value => {
-        dispatch(priceSliderAC(value))
+        priceSliderAC(value)
     }
 
     handleChangeSlider = handleChangeSliderDebounce(handleChangeSlider, 370)

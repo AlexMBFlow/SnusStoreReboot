@@ -1,8 +1,7 @@
 import React, { FC, useRef } from 'react';
 import { Button, message, Rate } from 'antd';
-import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { basketAddAC } from "../../../../redux/actionCreators/basketAC/basketAC";
+import { useActions } from '../../../../redux/hooks/useActions';
 import './SnusItem.css';
 
 type TSnusItem = {
@@ -20,7 +19,8 @@ type TSnusItem = {
 }
 
 export const SnusItem: FC<TSnusItem> = ({ snusProps }) => {
-    const dispatch = useDispatch()
+    //const dispatch = useDispatch<AppDispatch>()
+    const {basketAddAC} = useActions()
     const buttonRef = useRef<HTMLDivElement | null>(null!)
 
     const success = () => {
@@ -28,7 +28,7 @@ export const SnusItem: FC<TSnusItem> = ({ snusProps }) => {
         //если добавить 2 одинаковых корвуса, и нажать удалить один,
         //удалятся все корвусы, потому что у них одинавые id, ведь проверка идет по id
         const snusPropsWithNewId = { ...snusProps, _id: uuidv4() }
-        dispatch(basketAddAC(snusPropsWithNewId))
+        basketAddAC(snusPropsWithNewId)
         message.success('Добавлено в корзину', 0.85);
     };
 

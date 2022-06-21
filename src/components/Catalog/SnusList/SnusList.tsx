@@ -1,9 +1,12 @@
 import React, { FC, useEffect } from 'react';
-import { v4 as uuidv4 } from 'uuid'; 
+import { v4 as uuidv4 } from 'uuid';
+import { useDispatch } from "react-redux"
+import { AppDispatch } from '../../../redux/store';
 import { SnusItem } from './SnusItem/SnusItem';
 import { useTypedSelector } from "../../../redux/hooks/useTypedSelector";
 import { getSnus } from '../../../api/getSnus';
-import { useDispatch } from 'react-redux';
+//import { useActions } from '../../../redux/hooks/useActions';
+//import { useThunkDispatch } from '../../../redux/hooks/useThunkDispatch';
 import './SnusList.css';
 
 const getSnusListData = async (dispatch) => {
@@ -11,7 +14,10 @@ const getSnusListData = async (dispatch) => {
 }
 
 export const SnusList: FC = () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch<AppDispatch>()
+    //TODO
+    //const {  } = useThunkDispatch()
+    //const dispatch = useDispatch<AppDispatch>()
     useEffect( () => {
         getSnusListData(dispatch)
     }, [dispatch])
@@ -21,7 +27,7 @@ export const SnusList: FC = () => {
     const { selectedPrice } = useTypedSelector(state => state.priceReducer);
     const { sort } = useTypedSelector(state => state.priceReducer);
     const filteredPrice = snusItems.filter(el => { // фильтруем массив объектов со всем снюсом по значениям из слайдера
-        if (el.price > selectedPrice[0] && el.price < selectedPrice[1]) {
+        if (el.price >= selectedPrice[0] && el.price <= selectedPrice[1]) {
             return true
         } else {
             return false

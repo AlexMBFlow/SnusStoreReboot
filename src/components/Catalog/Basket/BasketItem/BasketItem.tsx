@@ -2,8 +2,7 @@
 import React, { FC } from 'react';
 import { CloseOutlined } from '@ant-design/icons';
 import { message } from 'antd';
-import { useDispatch } from 'react-redux';
-import { basketRemoveAC } from "../../../../redux/actionCreators/basketAC/basketAC";
+import { useActions } from '../../../../redux/hooks/useActions';
 import "./BasketItem.css";
 
 type TSnusItem = {
@@ -21,11 +20,11 @@ type TSnusItem = {
 }
 
 export const BasketItem: FC<TSnusItem>= ({ snusBasket }) => {
-    const dispatch = useDispatch();
+    const { basketRemoveAC } = useActions()
     
     const removeItem = () => {
         message.error('Удалено из корзины', 0.85)
-        dispatch(basketRemoveAC(snusBasket))
+        basketRemoveAC(snusBasket)
     }
 
     return (

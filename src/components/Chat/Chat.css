@@ -2,6 +2,12 @@
     position: fixed;
     right: 1rem;
     top: 95vh;
-    transform: scale(2.3);
+    
+    border-radius: 5px;
+    font-family: "Open Sans", sans-serif;
+}
+
+.chat-ico {
     cursor: pointer;
+    transform: scale(2.3);
 }
