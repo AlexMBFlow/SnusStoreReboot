@@ -1,4 +1,4 @@
-import { NEW_MESSAGE } from "../utils/actionTypes"
+import { NEW_CHAT_MESSAGE } from "../utils/actionTypes"
 
 interface IChatItem {
     body: string | null
@@ -31,7 +31,7 @@ const initialState: IChatState  = {
 
 export const chatReducer = (state = initialState, action: IChatItemAC) => {
     switch(action.type) {
-        case NEW_MESSAGE:
+        case NEW_CHAT_MESSAGE:
             return {...state, chatMessage: [...state.chatMessage, {body: action.payload.body, time: action.payload.time}]}
         default:
             return state
