@@ -53,6 +53,6 @@ export const sendOrder = async (obj: TSendOrder): Promise<AxiosResponse<string>>
             return res
         })
         .catch(err => {
-            return Promise.reject(err)
+            return Promise.reject(new Error(err))
         })
 }

@@ -8,6 +8,7 @@ import { setCheckAllAC } from './setCheckAllAC/setCheckAllAC';
 import { setIndeterminateAC } from './setIndeterminateAC/setIndeterminateAC';
 import { showBasketAC } from './showBasketAC/showBasketAC';
 import { showOrderAC } from './showOrderAC/showOrderAC';
+import { addChatItemAC } from './chatItemAC/addChatItemAC';
 import { userFirstNameAC, userSecondNameAC, userPhoneAC,
     userCountryAC, userCityAC, userAreaAC, userEmailAC, userSomeInfoAC } from './userInfoAC/userInfoAC';
 
@@ -32,5 +33,6 @@ export const allAC = {
     userCityAC,
     userAreaAC,
     userEmailAC,
-    userSomeInfoAC
+    userSomeInfoAC,
+    addChatItemAC
 }

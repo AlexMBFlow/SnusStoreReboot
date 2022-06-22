@@ -12,11 +12,8 @@ const CheckboxGroup = Checkbox.Group;
 export const NicotineFilter: FC = () => {
     const { checkedListAC, setIndeterminateAC, setCheckAllAC } = useActions()
     const tooltipText = '0-20мг легкий, 20-40мг средний, 40-60мг крепкий, 60+мг очень крепкий';
+    const { plainOptions, indeterminate, checkAll, defaultCheckedList } = useTypedSelector(state => state.nicotineReducer)
 
-    const { defaultCheckedList } = useTypedSelector(state => state.nicotineReducer)
-    const { plainOptions } = useTypedSelector(state => state.nicotineReducer)
-    const { indeterminate } = useTypedSelector(state => state.nicotineReducer)
-    const { checkAll } = useTypedSelector(state => state.nicotineReducer)
 
     const onChange = (list) => {
         checkedListAC(list)
