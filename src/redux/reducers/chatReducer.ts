@@ -1,4 +1,4 @@
-import { NEW_CHAT_MESSAGE } from "../utils/actionTypes"
+import { NEW_CHAT_MESSAGE } from "../utils/actionTypes";
 
 interface IChatItem {
     body: string | null
