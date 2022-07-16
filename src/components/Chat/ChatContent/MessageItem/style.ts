@@ -2,6 +2,7 @@ import style from "styled-components";
 
 export const MessageContainer = style.div`
     display: flex;
+    flex-wrap: wrap;
     line-height: 1.4rem;
 `
 

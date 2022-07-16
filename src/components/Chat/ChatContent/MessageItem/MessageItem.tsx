@@ -11,10 +11,10 @@ export const MessageItem: FC<IMessageItemProps> = ({ body, time }) => {
         <>
             <MessageContainer>
                 <MessageTime>
-                    {time}
+                    
                 </MessageTime>
                 <MessageBody>
-                    {body}
+                {time} {body}
                 </MessageBody>
             </MessageContainer>
         </>
