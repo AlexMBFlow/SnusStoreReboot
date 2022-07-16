@@ -13,7 +13,7 @@ export const ChatContent = () => {
     useEffect(() => {
         const scrollHeight = chatBody.current.scrollHeight
         const scrollTop = chatBody.current.scrollTop
-        if ((scrollHeight - scrollTop) > 230) {
+        if ((scrollHeight - scrollTop) < 250) {
             chatBody.current.scrollTo({
                 top: scrollHeight,
                 behavior: 'smooth'
