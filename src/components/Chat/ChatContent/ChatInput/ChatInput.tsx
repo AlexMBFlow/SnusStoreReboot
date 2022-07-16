@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Input } from 'antd';
+import { Input, message } from 'antd';
 import { SendOutlined } from "@ant-design/icons";
 import moment from 'moment';
 import { useActions } from "../../../../redux/hooks/useActions";
@@ -12,7 +12,11 @@ export const ChatInput = () => {
     }
 
     const sendMsgInChat = () => {
-        if (!inputValue) return
+        if (!inputValue || (inputValue.trim().length === 0)) return
+        if(inputValue.length > 120) {
+            message.warning(`Максимальная длина сообщения 120 символов, у вас ${inputValue.length}`);
+            return
+        }
         addChatItemAC(inputValue, moment().format('LT'))
         setInputValue("")
     }
