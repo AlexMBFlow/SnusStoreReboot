@@ -12,5 +12,6 @@ export const MessageTime = style.div`
 `
 
 export const MessageBody = style.div`
-    font-size: 1rem
+    font-size: 1rem;
+    word-break:break-all;
 `
