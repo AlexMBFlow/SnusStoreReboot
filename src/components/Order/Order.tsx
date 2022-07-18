@@ -32,7 +32,6 @@ export const Order = () => {
         }
         // Проверка заполненности всех нужных полей
         if (!firstName || !secondName || !phone || !country || !city || !area || !email) {
-            console.log(firstName)
             notification.info({
                 message: "Внимание!",
                 description: "Не все поля формы заполнены корректно",
