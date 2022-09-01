@@ -20,7 +20,6 @@ export const ChatContent = () => {
                 behavior: 'smooth'
             })
         }
-        
     }, [chatMessage])
     return (
         <ChatContainer>

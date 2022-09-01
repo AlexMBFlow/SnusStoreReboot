@@ -27,16 +27,16 @@ type TSendOrder = {
     info: TInfo
 }
 
-interface AxiosResponse<T = any>  {
+interface AxiosResponse<T = unknown>  {
     data: T;
     status: number;
     statusText: string;
-    headers: any;
-    config: any;
-    request?: any;
+    headers: unknown;
+    config: unknown;
+    request?: unknown;
 }
 
-axios.defaults.baseURL = "http://localhost:5000"
+axios.defaults.baseURL = "http://localhost:5000";
 export const sendOrder = async (obj: TSendOrder): Promise<AxiosResponse<string>> => {
     return await axios.post<TSendOrder, AxiosResponse<string>>("api/order", JSON.stringify(
         {
