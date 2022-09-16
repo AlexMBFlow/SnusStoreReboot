@@ -22,3 +22,4 @@ export const SET_ON_BASKET_FROM_LOCALSTORAGE: string = "SET_ON_BASKET_FROM_LOCAL
 export const GET_SNUS_FROM_FETCH: string = "GET_SNUS_FROM_FETCH";
 export const SET_SHOW_ORDER: string = "SET_SHOW_ORDER";
 export const NEW_CHAT_MESSAGE: string = "NEW_MESSAGE";
+export const CHAT_SEND_MESSAGE: string = "CHAT_SEND_MESSAGE";

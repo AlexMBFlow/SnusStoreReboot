@@ -1,7 +1,10 @@
+import { CHAT_SEND_MESSAGE } from "../../utils/actionTypes";
+import type {IPayload, ISocketAC} from "./socketTypes";
 
-export const socketAC = (payload) => {
+
+export const socketAC = (payload: IPayload): ISocketAC => {
     return {
-        type: "SEND_MESSAGE",
+        type: CHAT_SEND_MESSAGE,
         payload
     }
 }
