@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux"
 import { AppDispatch } from '../../../redux/store';
 import { SnusItem } from './SnusItem/SnusItem';
 import { useTypedSelector } from "../../../redux/hooks/useTypedSelector";
-import { getSnus } from '../../../api/getSnus';
+import { getSnus } from '../../../api/services/getSnus';
 //import { useActions } from '../../../redux/hooks/useActions';
 //import { useThunkDispatch } from '../../../redux/hooks/useThunkDispatch';
 import './SnusList.css';

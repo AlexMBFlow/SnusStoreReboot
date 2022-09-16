@@ -10,6 +10,7 @@ import { basketReducer } from "../redux/reducers/basketReducer";
 import { orderReducer } from './reducers/orderReducer';
 import { userInfoReducer } from './reducers/userInfoReducer';
 import { chatReducer } from './reducers/chatReducer';
+import { socketReducer } from './reducers/socketReducer';
 
 
 const rootReduser = combineReducers({
@@ -21,7 +22,8 @@ const rootReduser = combineReducers({
     basketReducer,
     orderReducer,
     userInfoReducer,
-    chatReducer
+    chatReducer,
+    socketReducer
 })
 
 export const store = createStore(rootReduser, composeWithDevTools(

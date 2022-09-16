@@ -1,4 +1,4 @@
-import { GET_SNUS_FROM_FETCH } from "../redux/utils/actionTypes";
+import { GET_SNUS_FROM_FETCH } from "../../redux/utils/actionTypes";
 
 export const getSnus = async () => {
     return dispatch => {
