@@ -5,22 +5,24 @@ import { AppDispatch } from '../../../redux/store';
 import { SnusItem } from './SnusItem/SnusItem';
 import { useTypedSelector } from "../../../redux/hooks/useTypedSelector";
 import { getSnus } from '../../../api/getSnus';
+import { Spin } from 'antd';
 //import { useActions } from '../../../redux/hooks/useActions';
 //import { useThunkDispatch } from '../../../redux/hooks/useThunkDispatch';
 import './SnusList.css';
 
-const getSnusListData = async (dispatch) => {
-    dispatch( await getSnus())
-}
 
 export const SnusList: FC = () => {
+    const getSnusListData = async (dispatch) => {
+        dispatch(await getSnus())
+    }
     const dispatch = useDispatch<AppDispatch>()
     //TODO
     //const {  } = useThunkDispatch()
     //const dispatch = useDispatch<AppDispatch>()
-    useEffect( () => {
+    useEffect(() => {
         getSnusListData(dispatch)
     }, [dispatch])
+
     const { snusItems } = useTypedSelector(state => state.snusReducer);
     const { value } = useTypedSelector(state => state.inputReducer);
     const { defaultCheckedList } = useTypedSelector(state => state.nicotineReducer); //selectedPrice
@@ -75,10 +77,17 @@ export const SnusList: FC = () => {
     })
 
     return (
-        <div className='snus-list'>
-            {inputFiltered.map(snus => (
-                <SnusItem snusProps={snus} key={uuidv4()} />
-            ))}
+        <div className={`snus-list ${snusItems.length === 0 ? "content-loading" : ""}`}>
+            {snusItems.length === 0 ?
+                <Spin style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center"
+                }} /> :
+
+                inputFiltered.map(snus => (
+                    <SnusItem snusProps={snus} key={uuidv4()} />
+                ))}
         </div>
     )
 }

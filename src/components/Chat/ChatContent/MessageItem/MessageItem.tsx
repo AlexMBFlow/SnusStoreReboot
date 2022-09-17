@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { MessageContainer, MessageTime, MessageBody } from './style';
+import { MessageContainer, UserName, MessageBody } from './style';
 
 interface IMessageItemProps {
     body: string
@@ -10,11 +10,11 @@ export const MessageItem: FC<IMessageItemProps> = ({ body, time }) => {
     return (
         <>
             <MessageContainer>
-                <MessageTime>
-                    
-                </MessageTime>
+                <UserName>
+                    {time} Аноним:
+                </UserName>
                 <MessageBody>
-                {time} {body}
+                    {body}
                 </MessageBody>
             </MessageContainer>
         </>

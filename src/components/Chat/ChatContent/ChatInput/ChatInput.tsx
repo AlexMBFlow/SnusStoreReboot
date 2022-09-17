@@ -34,8 +34,6 @@ export const ChatInput = () => {
         } catch (e) {
             message.error(`Не удалось отправить сообщение в чат`);
         }
-
-        setInputValue("")
     }
 
     const enterHandler = (e: { keyCode: number; }): void => {
@@ -53,7 +51,8 @@ export const ChatInput = () => {
             const message = JSON.parse(event.data)
             const { text, date } = message
             addChatItemAC(text, date)
-            console.log(`send message: ${inputValue}`)
+            console.log(`send message}`)            
+            setInputValue("")
         }
 
         const errorHandler = () => {

@@ -2,5 +2,10 @@
     display: flex;
     flex-flow: row wrap;
     align-items: flex-start;
-/*     justify-content: center;    */ 
+    min-height: 100vh
+}
+
+.content-loading {
+    align-items: center;
+    justify-content: center;
 }
