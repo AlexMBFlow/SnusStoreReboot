@@ -51,7 +51,7 @@ export const ChatInput = () => {
             const message = JSON.parse(event.data)
             const { text, date } = message
             addChatItemAC(text, date)
-            console.log(`send message}`)            
+            console.log(`send message}`)
             setInputValue("")
         }
 
