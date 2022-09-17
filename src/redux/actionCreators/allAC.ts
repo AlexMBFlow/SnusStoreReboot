@@ -11,7 +11,7 @@ import { showOrderAC } from './showOrderAC/showOrderAC';
 import { addChatItemAC } from './chatItemAC/addChatItemAC';
 import { userFirstNameAC, userSecondNameAC, userPhoneAC,
     userCountryAC, userCityAC, userAreaAC, userEmailAC, userSomeInfoAC } from './userInfoAC/userInfoAC';
-import { socketAC } from './socketAC/socketAC';
+import { sendSocketAC } from './socketAC/socketAC';
 
 export const allAC = {
     basketAddAC,
@@ -36,5 +36,5 @@ export const allAC = {
     userEmailAC,
     userSomeInfoAC,
     addChatItemAC,
-    socketAC
+    sendSocketAC
 }

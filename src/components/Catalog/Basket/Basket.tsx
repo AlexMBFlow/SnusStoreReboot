@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FC } from 'react';
+import React, { useState, FC } from 'react';
 import { Drawer, Button } from 'antd';
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import { v4 as uuidv4 } from 'uuid';
