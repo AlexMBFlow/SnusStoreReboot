@@ -15,18 +15,7 @@ interface IChatState {
 }
 
 const initialState: IChatState  = {
-    chatMessage: [{
-        body: "Hello!",
-        time: "23"
-    },
-    {
-        body: "Hi!",
-        time: "23"
-    },
-    {
-        body: "How are you?",
-        time: "23"
-    }]
+    chatMessage: []
 }
 
 export const chatReducer = (state = initialState, action: IChatItemAC) => {
