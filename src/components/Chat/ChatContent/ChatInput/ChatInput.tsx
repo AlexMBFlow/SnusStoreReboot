@@ -38,7 +38,7 @@ export const ChatInput = () => {
             sendMsgInChat()
         }
     }
-    
+
     useEffect(() => {
         const openHandler = (event: Event): void => {
             console.log("open", event)
@@ -48,8 +48,7 @@ export const ChatInput = () => {
             const message = JSON.parse(event.data)
             const { text, date } = message
             addChatItemAC(text, date)
-            console.log(message)
-            console.log("Отправили")
+            console.log("send message")
         }
         ws.addEventListener("open", openHandler)
 
