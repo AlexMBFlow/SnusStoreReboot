@@ -9,6 +9,7 @@ interface IChangeInputValue<T = string> {
         value: React.SetStateAction<T>;
     }
 }
+
 const ws: WebSocket = new WebSocket("ws://localhost:8080/chat");
 
 export const ChatInput = () => {
@@ -19,15 +20,19 @@ export const ChatInput = () => {
     }
 
     const sendMsgInChat = (): void => {
-        ws.send(JSON.stringify({
-            text: inputValue,
-            date: moment().format('LT')
-        }))
-
         if (!inputValue || (inputValue.trim().length === 0)) return
         if (inputValue.length > 120) {
             message.warning(`Максимальная длина сообщения 120 символов, у вас ${inputValue.length}`);
             return
+        }
+
+        try {
+            ws.send(JSON.stringify({
+                text: inputValue,
+                date: moment().format('LT')
+            }))
+        } catch (e) {
+            message.error(`Не удалось отправить сообщение в чат`);
         }
 
         setInputValue("")
@@ -48,14 +53,20 @@ export const ChatInput = () => {
             const message = JSON.parse(event.data)
             const { text, date } = message
             addChatItemAC(text, date)
-            console.log("send message")
+            console.log(`send message: ${inputValue}`)
         }
-        ws.addEventListener("open", openHandler)
 
+        const errorHandler = () => {
+            message.error(`В данный момент чат недоступен`);
+        }
+
+        ws.addEventListener("open", openHandler)
         ws.addEventListener("message", messageHandler)
+        ws.addEventListener("error", errorHandler)
         return () => {
             ws.removeEventListener("open", openHandler)
             ws.removeEventListener("message", messageHandler)
+            ws.removeEventListener("error", errorHandler)
         }
     }, [addChatItemAC])
     return (
