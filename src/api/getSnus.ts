@@ -1,5 +1,5 @@
-import { AppDispatch } from './../../redux/store';
-import { GET_SNUS_FROM_FETCH } from "../../redux/utils/actionTypes";
+import { AppDispatch } from '../redux/store';
+import { GET_SNUS_FROM_FETCH } from "../redux/utils/actionTypes";
 
 export const getSnus = async (): Promise<(dispatch: AppDispatch) => void> => {
     return dispatch => {

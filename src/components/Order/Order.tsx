@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Input, Button, Row, Col, message, notification } from 'antd';
 import { useTypedSelector } from '../../redux/hooks/useTypedSelector';
-import { sendOrder } from "../../api/services/sendOrder";
+import { sendOrder } from "../../api/sendOrder";
 import { useActions } from '../../redux/hooks/useActions';
 import "./Order.css";
 

@@ -68,7 +68,7 @@ export const ChatInput = () => {
             ws.removeEventListener("message", messageHandler)
             ws.removeEventListener("error", errorHandler)
         }
-    }, [addChatItemAC])
+    }, [])
     return (
         <>
             <Input onKeyDown={enterHandler} value={inputValue} onChange={changeInputValue} suffix={<SendOutlined onClick={sendMsgInChat} style={{
